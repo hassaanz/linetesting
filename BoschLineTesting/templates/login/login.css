@@ -1,0 +1,11 @@
+md-card.loginCard {
+    margin-top: 100px;
+    width: 50%;
+    left: 25%;
+}
+md-card.loginCard md-input {
+    width: 100%;
+}
+md-card.loginCard button[md-raised-button] {
+    display: block;
+}
