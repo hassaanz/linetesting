@@ -5,10 +5,13 @@ var modernizr = require('gulp-modernizr');
 var merge = require('merge-stream');
 
 var destPath = './libs/';
+var scriptsPath = './Scripts/'
 
 // Delete the dist directory
 gulp.task('clean', function () {
-    return gulp.src(destPath)
+    gulp.src(destPath)
+        .pipe(clean());
+    gulp.src(scriptsPath)
         .pipe(clean());
 });
 

@@ -1,5 +1,5 @@
 ﻿// ====== ./app/app.component.ts ======
-import { Component } from '@angular/core';
+import {Component, View, CORE_DIRECTIVES} from '@angular2/angular2'
 
 @Component({
     selector: 'my-app',
