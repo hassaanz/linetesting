@@ -1,0 +1,32 @@
+md-sidenav.bshSidebar {
+    background-color : #F2F2F2;
+    width: 150px;
+}
+md-list-item.sidenavListItem {
+    flex: 1;
+}
+
+md-sidenav > md-nav-list > a > md-list-item > div {
+    flex: 1;
+}
+a.sidenavItem:hover {
+    color: #2a6496;
+    text-decoration: none;
+}
+a.sidenavItem:active {
+    color: #2a6496;
+    text-decoration: none;
+}
+label.menuLbl {
+    vertical-align: bottom;
+    font-weight: normal;
+}
+
+label.menuLbl:hover{
+    vertical-align: bottom;
+}
+
+span.menuSymb > i{
+    font-size: 20px;
+    margin-right: 2px;
+}

@@ -67,7 +67,7 @@ module.exports = {
     "cors": false,
     "xip": false,
     "hostnameSuffix": false,
-    "reloadOnRestart": false,
+    "reloadOnRestart": true,
     "notify": true,
     "scrollProportionally": true,
     "scrollThrottle": 0,

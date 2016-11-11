@@ -1,0 +1,47 @@
+<div layout="column" style="height:90%;">
+  <md-sidenav-layout>
+    <md-sidenav class="bshSidebar" #left (open)="mybutton.focus()" [opened]="true" mode="side" layout-padding>
+        <md-toolbar>
+            <div style="display: block; color: grey;">
+                <md-toolbar-row>
+                    <i md-icon class="material-icons"></i>
+                </md-toolbar-row>
+            </div>
+        </md-toolbar>
+        <md-nav-list>
+            <a class="sidenavItem" [routerLink]="['/dash/home']">
+                <md-list-item class="sidenavListItem">
+                    <span class="menuSymb"><i md-icon class="material-icons">home</i></span>
+                    <label class="menuLbl">Home</label>
+                </md-list-item>
+            </a>
+            <md-list-item>
+                <a class="sidenavItem" [routerLink]="['/dash/products']">
+                    <span class="menuSymb"><i md-icon class="material-icons">party_mode</i></span>
+                    <label class="menuLbl">Products</label>
+                </a>
+            </md-list-item>
+            <md-list-item>
+                <a class="sidenavItem" [routerLink]="['/dash/settings']">
+                    <span class="menuSymb"><i md-icon class="material-icons">settings</i></span>
+                    <label class="menuLbl">Settings</label>
+                </a>
+            </md-list-item>
+            <md-list-item>
+                <a class="sidenavItem" [routerLink]="['/dash/settings']">
+                    <span class="menuSymb"><i md-icon class="material-icons">input</i></span>
+                    <label class="menuLbl">Logout</label>
+                </a>
+            </md-list-item>
+            <!--<md-list-item>
+                <button class="sidenavItem" md-raised-button class="md-raised md-primary" #mybutton (click)="left.close()">Close</button>
+            </md-list-item>-->
+        </md-nav-list>            
+    </md-sidenav>
+    <md-content layout-padding>
+      <router-outlet></router-outlet>
+      <md-divider></md-divider>
+      <button md-raised-button class="md-raised md-primary" (click)="left.toggle()">Toggle Left Sidenav</button>
+    </md-content>
+  </md-sidenav-layout>
+</div>

@@ -1,0 +1,45 @@
+#productsContainer {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    align-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+}
+md-card.prodListCard {
+    width: 350px;
+    margin-top: 15px;
+    padding-bottom: 0px;
+}
+
+md-card.prodListCard:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+md-card.prodListCard > md-card-content > p.prodinfo {
+    font-size: 20;
+}
+
+p.prodinfo > span.infolbl {
+    color: rgb(27, 9, 9);
+    font-weight: 300;
+    display: inline-block;
+    width: 150px;
+}
+i.fabBut {
+    padding-top: 0px;
+}

@@ -6,6 +6,10 @@ import { CatListComponent } from './cats/cat-list.component';
 import { DogListComponent } from './dogs/dog-list.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './pageNotFound.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { ProductsComponent } from './dashboard/Products/products.component'
+import { SettingsComponent } from './dashboard/settings/settings.component'
+import { HomeComponent } from './dashboard/home/home.component'
 
 // Route Configuration
 export const routes: Routes = [
@@ -18,6 +22,14 @@ export const routes: Routes = [
     { path: 'dogs', component: DogListComponent },
     { path: 'dogsabcdefghi', component: CatListComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'dash', component: DashboardComponent,
+        children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: HomeComponent },
+            { path: 'products', component: ProductsComponent },
+            { path: 'settings', component: SettingsComponent }
+        ]
+    },
     { path: '**', component: PageNotFoundComponent }
 ];
 

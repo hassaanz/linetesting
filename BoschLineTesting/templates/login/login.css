@@ -1,11 +1,16 @@
-md-card.loginCard {
-    margin-top: 100px;
-    width: 50%;
-    left: 25%;
+div.loginCard {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
 }
-md-card.loginCard md-input {
+md-card.cardContainer {
+    width: 50%;    
+}
+md-card.cardContainer md-input {
     width: 100%;
 }
-md-card.loginCard button[md-raised-button] {
+md-card.cardContainer button[md-raised-button] {
     display: block;
 }

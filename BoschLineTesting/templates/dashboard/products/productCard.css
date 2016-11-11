@@ -1,0 +1,29 @@
+#productsContainer {
+    
+}
+md-card.prodListCard {
+    width: 350px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+md-card.prodListCard:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+md-card.prodListCard > md-card-content > p.prodinfo {
+    font-size: 20;
+}
+
+p.prodinfo > span.infolbl {
+    color: rgb(27, 9, 9);
+    font-weight: 300;
+    display: inline-block;
+    width: 90px;
+}
+p.prodinfo > span.infoVal {
+    font-weight: 400;
+    display: inline-block;
+}
