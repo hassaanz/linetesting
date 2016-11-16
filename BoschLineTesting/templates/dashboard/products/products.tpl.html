@@ -1,4 +1,5 @@
 <div class="subNavContainer">
+    <md-input name="searchProducts" placeholder="Search Products" #searchBox [ngModel]="prodSearchStr" (ngModelChange)="searchProducts($event)" (Change)="searchProducts($event)"></md-input>
     <button md-mini-fab (click)="toggleAdd()" color="primary">
         <i md-icon class="material-icons md-24 fabBut" *ngIf="!addEnabled">add</i>
         <i md-icon class="material-icons md-24 fabBut" *ngIf="addEnabled">close</i>
@@ -31,9 +32,9 @@
 
     <h2 class="text-primary">Products List </h2>
     <div id="productsContainer">
-        <bsh-product *ngFor="let prod of products" [product]="prod"></bsh-product>
+        <bsh-product *ngFor="let prod of productsFiltered" [product]="prod"></bsh-product>
     </div>
-    <!--<button md-fab color="primary" (click)="toggleAdd()" color="blue">
+<!--<button md-fab color="primary" (click)="toggleAdd()" color="blue">
         <button md-icon-button><i md-icon class="material-icons md-24 fabBut">add</i></button>
     </button>-->
 </div>

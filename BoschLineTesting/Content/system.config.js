@@ -26,6 +26,9 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+            'ng2-auto-complete': 'npm:ng2-auto-complete/dist/',
+            'ng2-datetime-picker': 'npm:ng2-datetime-picker/dist/',
+            'immutable': 'npm:immutable/dist/'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -43,6 +46,18 @@
             'ng2-material': {
                 main: './index.js',
                 defaultExtension: 'js'
+            },
+            'ng2-auto-complete': {
+                main: 'ng2-auto-complete.umd.js',
+                defaultExtension: 'js'
+            },
+            'ng2-datetime-picker': {
+                main: 'ng2-datetime-picker.umd.js', 
+                defaultExtension: 'js'
+            },
+            immutable: {
+                main: 'immutable.d.ts',
+                defaultExtension: 'ts'
             }
         }
     });

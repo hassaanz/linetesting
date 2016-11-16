@@ -8,6 +8,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { Ng2MaterialModule } from "ng2-material";
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 
 // Declarations
 import { AppComponent } from './app.component';
@@ -18,9 +20,12 @@ import { PageNotFoundComponent } from './pageNotFound.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './dashboard/Products/products.component';
 import { ProductCardComponent } from './dashboard/Products/productCard.component';
+import { ProductDetailsComponent } from './dashboard/Products/productDetails.component';
+import { ObservationListComponent } from './dashboard/Products/observationList.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SideNavComponent } from './sidenav/sidenav.component';
+import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';
 
 // Providers
 import { UserService } from './services/user.service'
@@ -38,6 +43,8 @@ import { routing } from './app.routes';
         HttpModule,
         JsonpModule,
         routing,
+        Ng2AutoCompleteModule,
+        Ng2DatetimePickerModule
     ],
     declarations: [
         AppComponent,
@@ -48,9 +55,11 @@ import { routing } from './app.routes';
         DashboardComponent,
         ProductsComponent,
         ProductCardComponent,
+        ProductDetailsComponent,
         SettingsComponent,
         HomeComponent,
         SideNavComponent,
+        AutoCompleteFilter
     ],
     providers: [UserService, ProductsService],
     bootstrap: [AppComponent]

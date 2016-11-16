@@ -7,11 +7,13 @@ import { Subscription }   from 'rxjs/Subscription';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
+
+
 @Component({
     selector: 'my-app',
     templateUrl: './templates/app.component.tpl.html',
     styleUrls: ['./templates/app.css'],
-    providers: [UserService]
+    providers: [UserService, ProductsService],
 })
 
 // App Component class

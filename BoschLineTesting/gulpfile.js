@@ -27,7 +27,12 @@ gulp.task("scriptsNStyles", () => {
         'bootstrap/dist/js/bootstrap.*js',
         'ng2-material/**/*.js',
         'ng2-material/**/*.map',
-        'respond.js/dest/respond.min.js'
+        'respond.js/dest/respond.min.js',
+        'ng2-auto-complete/dist/**/*.js',
+        'ng2-auto-complete/dist/**/*.map',
+        'ng2-datetime-picker/dist/**/*.js',
+        'ng2-datetime-picker/dist/**/*.map',
+        'immutable/dist/**/*.js'
     ], {
         cwd: "node_modules/**"
     })

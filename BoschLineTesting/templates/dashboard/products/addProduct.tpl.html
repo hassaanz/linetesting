@@ -1,0 +1,25 @@
+<md-card class="prodListCard" *ngIf="addEnabled">
+    <form [formGroup]="prodForm" (submit)="addProduct($event)">
+        <md-card-title>
+            Add New Product
+        </md-card-title>
+        <md-card-content>
+            <div class="editContainer">
+                    <p class="prodinfo">
+                        <md-input name="name" [formControl]="prodForm.controls['name']" required placeholder="Enter Product Name" ></md-input>
+                    </p>
+                    <p class="prodinfo">
+                        <md-input name="number" required [formControl]="prodForm.controls['number']" placeholder="Enter Product Number" ></md-input>
+                    </p>
+                    <p class="prodinfo">
+                        <md-input name="lineID" required [formControl]="prodForm.controls['lineID']" placeholder="Enter Line ID" ></md-input>
+                    </p>
+            </div>
+        </md-card-content>
+        <md-card-actions align="right" *ngIf="!edit">
+            <button md-icon-button>
+                <a><button type="submit" md-icon-button><i md-icon class="material-icons md-24">save</i></button></a>
+            </button>
+        </md-card-actions>
+    </form>
+</md-card>
