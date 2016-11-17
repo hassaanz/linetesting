@@ -19,11 +19,10 @@ export class ProductDetailsComponent implements OnInit {
         private productsService: ProductsService,
         private router: Router,
         private route: ActivatedRoute) {
-        
     }
 
     ngOnInit() {
-        this.product = this.productsService.getProducts()
+        this.product = this.productsService.getproductByID(+this.route.params['id'])
     }
 
     onSave(f: NgForm) {

@@ -20,7 +20,7 @@ gulp.task("scriptsNStyles", () => {
         'core-js/client/**',
         'systemjs/dist/system.src.js',
         'reflect-metadata/**',
-        'rxjs/**',
+        'rxjs/**/*.js',
         'zone.js/dist/**',
         '@angular/**',
         'jquery/dist/jquery.*js',

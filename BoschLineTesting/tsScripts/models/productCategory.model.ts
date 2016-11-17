@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
 
-const ProductRecord = Record({
-    number: '0',
+const ProductCategoryRecord = Record({
+    id: '0',
     name: '',
     createdOn: new Date(),
     createdBy: ''
@@ -9,8 +9,8 @@ const ProductRecord = Record({
 /**
  * Product
  */
-export class Product extends ProductRecord {
-    number: number;
+export class ProductCategory extends ProductCategoryRecord {
+    id: number;
     name: String;
     createdOn: Date;
     createdBy: String;

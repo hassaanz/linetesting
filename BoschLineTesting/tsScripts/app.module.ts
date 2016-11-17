@@ -21,15 +21,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './dashboard/Products/products.component';
 import { ProductCardComponent } from './dashboard/Products/productCard.component';
 import { ProductDetailsComponent } from './dashboard/Products/productDetails.component';
-import { ObservationListComponent } from './dashboard/Products/observationList.component';
+import { ObservationListComponent } from './dashboard/Products/Observations/observationList.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SideNavComponent } from './sidenav/sidenav.component';
 import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';
 
 // Providers
-import { UserService } from './services/user.service'
-import { ProductsService } from './services/products.service'
+import { UserService } from './services/user.service';
+import { ProductsService } from './services/products.service';
+import { ProductsBackendService } from './services/productsBackend.service'; 
 
 import { routing } from './app.routes';
 
@@ -61,7 +62,7 @@ import { routing } from './app.routes';
         SideNavComponent,
         AutoCompleteFilter
     ],
-    providers: [UserService, ProductsService],
-    bootstrap: [AppComponent]
+    providers: [ UserService, ProductsService, ProductsBackendService ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

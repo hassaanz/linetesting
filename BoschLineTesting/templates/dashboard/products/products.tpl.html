@@ -1,5 +1,5 @@
 <div class="subNavContainer">
-    <md-input name="searchProducts" placeholder="Search Products" #searchBox [ngModel]="prodSearchStr" (ngModelChange)="searchProducts($event)" (Change)="searchProducts($event)"></md-input>
+    <md-input name="searchProducts" placeholder="Search Products" #searchBox [ngModel]="prodSearchStr" (ngModelChange)="filterChanged($event)" (Change)="searchProducts($event)"></md-input>
     <button md-mini-fab (click)="toggleAdd()" color="primary">
         <i md-icon class="material-icons md-24 fabBut" *ngIf="!addEnabled">add</i>
         <i md-icon class="material-icons md-24 fabBut" *ngIf="addEnabled">close</i>

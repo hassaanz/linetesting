@@ -13,7 +13,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
     selector: 'my-app',
     templateUrl: './templates/app.component.tpl.html',
     styleUrls: ['./templates/app.css'],
-    providers: [UserService, ProductsService],
 })
 
 // App Component class

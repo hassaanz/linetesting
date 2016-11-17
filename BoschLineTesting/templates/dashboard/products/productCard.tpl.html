@@ -35,7 +35,7 @@
             </div>
         </md-card-content>
         <md-card-actions align="right" *ngIf="!edit">
-            <a [routerLink]="['/dash/products/']"><button md-icon-button><i md-icon class="material-icons md-24">open_in_new</i></button></a>
+            <a [routerLink]="['/dash/products/'+product.number]"><button md-icon-button><i md-icon class="material-icons md-24">open_in_new</i></button></a>
             <button md-icon-button (click)="editProd()"><i md-icon class="material-icons md-24">edit</i></button>
         </md-card-actions>
         <md-card-actions align="right" *ngIf="edit">

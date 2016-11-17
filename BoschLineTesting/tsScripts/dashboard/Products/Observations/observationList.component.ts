@@ -10,7 +10,6 @@ import { NgForm } from '@angular/forms';
     selector: 'bsh-observation-list'
 })
 
-// Component class
 export class ObservationListComponent implements OnInit {
     edit = false;
     @Input() observations;

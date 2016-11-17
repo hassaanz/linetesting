@@ -24,7 +24,7 @@
             '@angular/material': 'npm:@angular/material/material.umd.js',
             'ng2-material': 'npm:ng2-material',
             // other libraries
-            'rxjs': 'npm:rxjs',
+            'rxjs': 'npm:rxjs/',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
             'ng2-auto-complete': 'npm:ng2-auto-complete/dist/',
             'ng2-datetime-picker': 'npm:ng2-datetime-picker/dist/',
@@ -37,6 +37,7 @@
                 defaultExtension: 'js'
             },
             rxjs: {
+                main: '/Rx.js',
                 defaultExtension: 'js'
             },
             'angular2-in-memory-web-api': {
@@ -56,8 +57,8 @@
                 defaultExtension: 'js'
             },
             immutable: {
-                main: 'immutable.d.ts',
-                defaultExtension: 'ts'
+                main: 'immutable.js',
+                defaultExtension: 'js'
             }
         }
     });
