@@ -1,22 +1,45 @@
 /**
  * Observation
  */
-class Observation {
-    constructor(
-        private number: number,
-        private shortText: String,
-        private inspectionChar: String,
-        private toolNumber: String,
-        private inspectionMethod: String,
-        private maintainanceDesc: String,
-        private recordDesc: String,
-        private insMetKey: String,
-        private prodResDesc: String,
-        private respDesc: String,
-        private validFrom: Date,
-        private validTo: Date,
-        private createdOn: Date,
-        private prodNum: number
-    ) { }
-    
+
+import { Record } from 'immutable';
+
+const ObservationRecord = Record({
+    id: -1,
+    number: 0,
+    shortText: '',
+    inspectionChar: '',
+    toolNumber: 0,
+    inspectionMethod: '',
+    maintainanceDesc: '',
+    recordDesc: '',
+    insMetKey: '',
+    prodResDesc: '',
+    respDesc: '',
+    validFrom: '',
+    validTo: '',
+    createdOn: new Date(),
+    prodNum: '-1'
+});
+
+export class Observation extends ObservationRecord {
+    id: number;
+    number: number;
+    shortText: String;
+    inspectionChar: String;
+    toolNumber: String;
+    inspectionMethod: String;
+    maintainanceDesc: String;
+    recordDesc: String;
+    insMetKey: String;
+    prodResDesc: String;
+    respDesc: String;
+    validFrom: Date;
+    validTo: Date;
+    createdOn: Date;
+    prodNum: number;
+
+    constructor(props) {
+        super(props);
+    }
 }

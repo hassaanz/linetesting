@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private fb: FormBuilder) { 
+            // @TODO fix form add group
             this.prodForm = fb.group({
                 name: ["", Validators.required],
                 number: ["", Validators.required],

@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from "../../services/products.service";
+import { ProductObservationService } from "../../services/productObservation.service";
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -22,7 +23,16 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.product = this.productsService.getproductByID(+this.route.params['id'])
+        this.route.params.subscribe( (param: any) =>{
+            let prodID = parseInt(param['id']);
+            if (isNaN(prodID)) {
+                this.router.navigate(['dash/products']);
+                return;
+            }
+            console.log("Route ID: ", prodID);
+            this.product = this.productsService.getproductByID(prodID);
+            console.log("Got Product", this.product);
+        })
     }
 
     onSave(f: NgForm) {

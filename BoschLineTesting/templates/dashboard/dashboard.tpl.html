@@ -39,9 +39,9 @@
         </md-nav-list>            
     </md-sidenav>
     <md-content layout-padding>
-      <router-outlet></router-outlet>
-      <md-divider></md-divider>
-      <button md-raised-button class="md-raised md-primary" (click)="left.toggle()">Toggle Left Sidenav</button>
+        <div style="height: 95%">
+            <router-outlet></router-outlet>
+        </div>
     </md-content>
   </md-sidenav-layout>
 </div>

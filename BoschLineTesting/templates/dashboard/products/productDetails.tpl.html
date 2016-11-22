@@ -1,2 +1,47 @@
-Product Details
-{{prodcut}}
+<div class="productDetailsPage">
+    <div class="productDetails">
+        <div>
+            <a [routerLink]="['/dash/products/']">
+                <button md-icon-button color="primary"><i md-icon class="text-primary material-icons md-24">arrow_back</i></button>
+            </a>
+            <span class="h2 <text-primary></text-primary>">Product Details</span>
+        </div>
+
+        <md-card>
+            <md-card-title>{{product.name | uppercase}}</md-card-title>
+            <md-card-subtitle><span class="text-primary">{{product.number}}</span></md-card-subtitle>
+            <md-card-content>
+                <div class="productDetailsCont">
+                    <md-list class="prodDetSec" style="flex:2" dense>
+                        <h3>Product Lines</h3>
+                        <md-list-item>Line 1</md-list-item>
+                    </md-list>
+                    <md-list class="prodDetSec" style="flex:1">
+                        <md-list-item class="prodDetTxt"> 
+                            <p class="" md-line>Created On</p>
+                            <span class="desc"  md-line>{{product.createdOn | date: "fullDate"}}</span> 
+                        </md-list-item>
+                        <md-list-item class="prodDetTxt"> 
+                            <p class="" md-line>Created By</p>
+                            <span class="desc"  md-line>{{product.createdBy}}</span> 
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-card-content>
+            <md-card-actions>
+                <!--<button md-button>EDIT</button>-->
+            </md-card-actions>
+        </md-card>
+        <md-card class="obsCard">
+            <p>Please choose an observation from the right to view / modify values.</p>
+        </md-card>
+    </div>
+    <div class="observationList">
+        <md-list dense>
+            <h4>Product Observations</h4>
+            <md-list-item>Line 1</md-list-item>
+            <md-list-item>Line 2</md-list-item>
+            <md-list-item>Line 3</md-list-item>
+        </md-list>
+    </div>
+</div>

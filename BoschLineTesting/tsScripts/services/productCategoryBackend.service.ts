@@ -8,7 +8,7 @@ import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
-export class ProductsCategoryBackendService {
+export class ProductCategoryBackendService {
 
     private _productCategories = [
         {
@@ -71,36 +71,6 @@ export class ProductsCategoryBackendService {
         }, {
         "id": 20,
         "name": "Garden"
-        }, {
-        "id": 21,
-        "name": "Baby"
-        }, {
-        "id": 22,
-        "name": "Home"
-        }, {
-        "id": 23,
-        "name": "Garden"
-        }, {
-        "id": 24,
-        "name": "Tools"
-        }, {
-        "id": 25,
-        "name": "Electronics"
-        }, {
-        "id": 26,
-        "name": "Toys"
-        }, {
-        "id": 27,
-        "name": "Kids"
-        }, {
-        "id": 28,
-        "name": "Baby"
-        }, {
-        "id": 29,
-        "name": "Computers"
-        }, {
-        "id": 30,
-        "name": "Clothing"
         }
     ]
 
@@ -111,7 +81,7 @@ export class ProductsCategoryBackendService {
         this.http = http;
     }
 
-    getAllProducts() {
+    getAllProductCategories() {
         return this.prodCategoryList.toArray();
         // return this.http.get('/api/products');
     }
@@ -120,7 +90,7 @@ export class ProductsCategoryBackendService {
         return this.prodCategoryList.size;
     }
 
-    saveProduct(newProduct: ProductCategory) {
+    saveProductCategory(newProduct: ProductCategory) {
 
         this.prodCategoryList.push(newProduct);
         // var headers = new Headers();
@@ -132,12 +102,16 @@ export class ProductsCategoryBackendService {
 
     deleteProduct(deletedProduct: ProductCategory) {
         // this.prodList = this.prodList.find(deletedProduct, 1)
-        return {status: 1};
+        let foundProdInd:number = this.findIndexByID(deletedProduct.id);
+        if (foundProdInd) {
+
+        }
         // let params = new URLSearchParams();
         // params.append('id', '' + deletedProduct.number );
 
         // return this.http.delete('/api/product', {search: params}).share();
     }
+
     findByID(id: number) {
         this.prodCategoryList.forEach( (prodCat: ProductCategory) => {
             if (prodCat.id === id) {
@@ -146,6 +120,7 @@ export class ProductsCategoryBackendService {
         })
         return null;
     }
+
     findIndexByID(id: number) {
         this.prodCategoryList.forEach( (prodCat: ProductCategory, ind: number) => {
             if (prodCat.id === id) {
@@ -154,10 +129,12 @@ export class ProductsCategoryBackendService {
         })
         return -1;
     }
+
     updateProduct(updatedProduct: ProductCategory) {
         let foundProdInd:number = this.findIndexByID(updatedProduct.id);
-        this.prodCategoryList = this.prodCategoryList.set(foundProdInd, updatedProduct);
-        return updatedProduct;
+        if (foundProdInd ) {
+            this.prodCategoryList = this.prodCategoryList.set(foundProdInd, updatedProduct);
+            return updatedProduct;
+        }
     }
-
 }

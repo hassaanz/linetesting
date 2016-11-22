@@ -2,9 +2,9 @@
     display: flex;
     display: -webkit-flex;
     display: -ms-flexbox;
-    flex-direction: row;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
@@ -17,6 +17,14 @@
     align-items: flex-start;
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
+}
+.searchBox {
+    /*float: right;*/
+    width: 300px;
+    display: flex;
+}
+md-input.searchImp {
+    width: 90%;
 }
 md-card.prodListCard {
     width: 350px;
@@ -42,4 +50,34 @@ p.prodinfo > span.infolbl {
 }
 i.fabBut {
     padding-top: 0px;
+}
+
+.groupSelection {
+    flex-direction: column;
+}
+
+button.groupFilterBut {
+    background-color: gray;
+    color: #222222;
+    width: 120px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24;
+    margin-left: 5px;
+}
+button.groupFilterBut:hover {
+    background-color: #3f51b5;
+}
+div.prodGroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+}
+div.searchToolbox {
+    float: right;
+    justify-content: row;
+    flex-direction: column;
 }

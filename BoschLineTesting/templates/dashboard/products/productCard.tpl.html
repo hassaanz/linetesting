@@ -12,7 +12,11 @@
                 </p>
                 <p class="prodinfo">
                     <span class="infolbl">Line</span>
-                    <span class="infoVal">{{product.lineID}}</span>
+                    <span class="infoVal">{{product.lineName}}</span>
+                </p>
+                <p class="prodinfo">
+                    <span class="infolbl">Group</span>
+                    <span class="infoVal">{{product.groupName}}</span>
                 </p>
             </div>
             <div class="editContainer" *ngIf="edit">
@@ -31,11 +35,16 @@
                         <md-input name="lineID" required placeholder="Enter Line ID" [(ngModel)]="product.lineID"></md-input>
                         <!--<span>{{product.lineID}}</span>-->
                     </p>
+                    <p class="prodinfo">
+                        <!--<span class="infolbl">Line</span>-->
+                        <md-input name="groupName" required placeholder="Enter product group" [(ngModel)]="product.groupName"></md-input>
+                        <!--<span>{{product.lineID}}</span>-->
+                    </p>
                 </form>
             </div>
         </md-card-content>
         <md-card-actions align="right" *ngIf="!edit">
-            <a [routerLink]="['/dash/products/'+product.number]"><button md-icon-button><i md-icon class="material-icons md-24">open_in_new</i></button></a>
+            <a [routerLink]="['/dash/products/'+product.id]"><button md-icon-button><i md-icon class="material-icons md-24">open_in_new</i></button></a>
             <button md-icon-button (click)="editProd()"><i md-icon class="material-icons md-24">edit</i></button>
         </md-card-actions>
         <md-card-actions align="right" *ngIf="edit">

@@ -13,15 +13,22 @@ import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 
 // Declarations
 import { AppComponent } from './app.component';
+
 import { CatListComponent } from './cats/cat-list.component';
 import { DogListComponent } from './dogs/dog-list.component';
+
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './pageNotFound.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { ProductsComponent } from './dashboard/Products/products.component';
 import { ProductCardComponent } from './dashboard/Products/productCard.component';
 import { ProductDetailsComponent } from './dashboard/Products/productDetails.component';
+
 import { ObservationListComponent } from './dashboard/Products/Observations/observationList.component';
+import { ObservationListItemComponent } from './dashboard/Products/Observations/observationListItem.component';
+
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SideNavComponent } from './sidenav/sidenav.component';
@@ -30,7 +37,13 @@ import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.comp
 // Providers
 import { UserService } from './services/user.service';
 import { ProductsService } from './services/products.service';
-import { ProductsBackendService } from './services/productsBackend.service'; 
+import { ProductsBackendService } from './services/productsBackend.service';
+
+import { ProductObservationService } from './services/productObservation.service'; 
+import { ProductObservationBackendService } from './services/productObservationBackend.service'; 
+
+import { ProductCategoryService } from './services/productCategory.service';
+import { ProductCategoryBackendService } from './services/productCategoryBackend.service';
 
 import { routing } from './app.routes';
 
@@ -57,12 +70,22 @@ import { routing } from './app.routes';
         ProductsComponent,
         ProductCardComponent,
         ProductDetailsComponent,
+        ObservationListComponent,
+        ObservationListItemComponent,
         SettingsComponent,
         HomeComponent,
         SideNavComponent,
         AutoCompleteFilter
     ],
-    providers: [ UserService, ProductsService, ProductsBackendService ],
+    providers: [
+        UserService,
+        ProductsService,
+        ProductCategoryService,
+        ProductsBackendService,
+        ProductObservationService,
+        ProductCategoryBackendService,
+        ProductObservationBackendService,
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

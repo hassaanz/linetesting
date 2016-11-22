@@ -10,7 +10,6 @@ export class ProductsService {
   
 
   private _productsSource: BehaviorSubject<List<Product>> = new BehaviorSubject(List([]));
-  private productsSource = new Subject<Product>();
   
   constructor(private productsBackend: ProductsBackendService) {
     this.loadInitialData();
@@ -19,10 +18,13 @@ export class ProductsService {
   loadInitialData() {
     let products = (<Object[]>this.productsBackend.getAllProducts()).map( (prod: any) =>
         new Product({
+          id: prod.id,
           number: prod.number,
           name: prod.name,
           createdOn: prod.createdOn,
-          createdBy: prod.createdBy
+          createdBy: prod.createdBy,
+          groupName: prod.category,
+          lineName: prod.Line,
       }));
     this._productsSource.next(List(products));
   }

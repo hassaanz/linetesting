@@ -1,0 +1,33 @@
+md-list-item.prodDetTxt {
+    justify-content: flex-start;
+}
+
+div.productDetailsCont {
+    display: flex;
+    flex-flow: column;
+    flex-direction: row;
+}
+md-list.prodDetSec {
+    flex: 1;
+    
+    flex-direction: row;
+}
+
+md-card.obsCard {
+    margin-top: 20px;
+    height: 400px;
+    font-size: 24px;
+}
+
+div.productDetailsPage {
+    display: flex;
+    flex-direction: row;  
+}
+div.productDetails {
+    flex: 4;
+}
+div.observationList {
+    
+    margin-left: 30px;
+    width: 200px;
+}
