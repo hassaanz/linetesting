@@ -2,7 +2,7 @@
     <div class="searchToolbox">
         <div class="searchBox">
             <i md-icon class="material-icons md-24 fabBut" style="vertical-align: center" *ngIf="!addEnabled">search</i>
-            <md-input class="searchImp" align="right" name="searchProducts" placeholder="Search Products" #searchBox [(ngModel)]="prodSearchStr" (ngModelChange)="filterChanged($event)"></md-input>
+            <md-input class="searchImp" align="right" name="searchProducts" placeholder="Search Products" #searchBox [(ngModel)]="prodSearchStr" (ngModelChange)="prodsFilterChanged($event)"></md-input>
         </div>
         <div class="searchBox">
             <i md-icon class="material-icons md-24 fabBut" *ngIf="!addEnabled">search</i>
@@ -47,7 +47,9 @@
     <div class="groupSelection">
         <button class="groupFilterBut" *ngFor="let groupName of prodGroupsNames">{{groupName}}</button>
     </div>-->
+    <p *ngIf="(prodSearchStr !== '' || groupSearchStr !== '') && prodGroupArr.length !== 0">Showing {{prodGroupArr.length}} products from search.</p>
     <div id="productsContainer">
+        <h3 *ngIf="prodGroupArr.length === 0">No products found. Please try changing search filters.</h3>
         <div *ngFor="let group of prodGroupArr">
             <h3>{{group.groupName}}</h3>
             <div class="prodGroup">

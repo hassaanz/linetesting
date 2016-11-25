@@ -23,21 +23,21 @@
                 <form #prodForm="ngForm" (ngSubmit)="onSave(f)">
                     <p class="prodinfo">
                         <!--<span class="infolbl">Name</span>-->
-                        <md-input name="name" required placeholder="Enter Product Name" [(ngModel)]="product.name"></md-input>
+                        <md-input name="name" required placeholder="Enter Product Name" [(ngModel)]="product.name" ngControl="name"></md-input>
                     </p>
                     <p class="prodinfo">
                         <!--<span class="infolbl">Number</span>-->
-                        <md-input name="number" required placeholder="Enter Product Number" [(ngModel)]="product.number"></md-input>
+                        <md-input name="number" required placeholder="Enter Product Number" [(ngModel)]="product.number" ngControl="number"></md-input>
                         <!--<span>{{product.number}}</span>-->
                     </p>
                     <p class="prodinfo">
                         <!--<span class="infolbl">Line</span>-->
-                        <md-input name="lineID" required placeholder="Enter Line ID" [(ngModel)]="product.lineID"></md-input>
+                        <md-input name="lineID" required placeholder="Enter Line Name" [(ngModel)]="product.lineName" ngControl="lineID"></md-input>
                         <!--<span>{{product.lineID}}</span>-->
                     </p>
                     <p class="prodinfo">
                         <!--<span class="infolbl">Line</span>-->
-                        <md-input name="groupName" required placeholder="Enter product group" [(ngModel)]="product.groupName"></md-input>
+                        <md-input name="groupName" required placeholder="Enter Group Name" [(ngModel)]="product.groupName" ngControl="groupName"></md-input>
                         <!--<span>{{product.lineID}}</span>-->
                     </p>
                 </form>

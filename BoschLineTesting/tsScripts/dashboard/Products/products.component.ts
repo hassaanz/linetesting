@@ -15,10 +15,11 @@ import { List } from 'immutable';
 // Component class
 export class ProductsComponent implements OnInit {
     products: List<Product>;
-    productsGroups = {};
+    // productsGroups = {};
+    // prodGroupArr = [];
     prodGroupArr = [];
-    prodGroupArrOrig = [];
-    productsFiltered;
+    private productsFiltered = [];
+    // productsFiltered;
     addEnabled = false;
     prodForm: FormGroup;
     prodSearchStr: String = '';
@@ -27,31 +28,18 @@ export class ProductsComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private productsService: ProductsService,
+        
         private fb: FormBuilder) {
-            this.prodGroupArr = [];
             this.prodForm = fb.group({
                 name: ["", Validators.required],
                 number: ["", Validators.required],
-                lineID: ["", Validators.required]
+                lineID: ["", Validators.required],
+                groupName: ["", Validators.required]
             });
             this.productsService.products.subscribe(
                 res => {
-                    this.prodGroupArr = [];
-                    this.prodGroupArrOrig = [];
                     this.products = res;
-                    this.productsGroups = {};
-                    this.products.forEach( (prod) => {
-                        if (!this.productsGroups[prod.groupName]) {
-                            this.productsGroups[prod.groupName] = {groupName: prod.groupName, prods: []};
-                        }
-                        this.productsGroups[prod.groupName].prods.push(prod);
-                    });
-                    
-                    Object.keys(this.productsGroups).forEach( (key, ind) => {
-                        this.prodGroupArr.push(this.productsGroups[key])    
-                    })
-                    this.prodGroupArrOrig = this.prodGroupArr;
-                    this.productsFiltered = this.filterProducts(this.prodSearchStr, res.toArray());
+                    this.prodGroupArr = this.productsToGroups(this.applyFiltersOnProds(this.prodSearchStr, this.groupSearchStr, this.products.toArray()));
                 },
                 err => console.log("Error retrieving Products")
             )
@@ -61,63 +49,55 @@ export class ProductsComponent implements OnInit {
         this.productsService.loadInitialData();
     }
 
-    filterChanged(filterStr) {
+    prodsFilterChanged(filterStr) {
         filterStr = filterStr || '';
         this.prodSearchStr = filterStr;
-        console.log(this.groupSearchStr, this.prodSearchStr);
-        this.prodGroupArr = this.filterProductGroups(this.groupSearchStr, this.prodGroupArrOrig, this.prodSearchStr);
-        // this.productsFiltered = this.filterProducts(filterStr, this.products);
+        this.prodGroupArr = this.productsToGroups(this.applyFiltersOnProds(this.prodSearchStr, this.groupSearchStr, this.products));
     }
 
-    filterProductGroups(filterStr, prodGrpArr, prodSearch) {
-        prodSearch = prodSearch.toLowerCase();
-        filterStr = filterStr.toLowerCase();
-        if (filterStr !== '') {
-            var filteredGroups = prodGrpArr.filter((prodGrp) => {
-                let grpName = prodGrp.groupName.toLowerCase();
-                if (grpName) {
-                    return (grpName.includes(filterStr.toLowerCase()));
-                }
-                return false; 
-            });
-            console.log(filteredGroups)
-            filteredGroups.forEach((prodGroupObj, ind) => {
-                var origProds = prodGrpArr.find( prodGroupOrid => (prodGroupOrid.groupName === prodGroupObj.groupName));
-                filteredGroups[ind].prods = this.filterProducts(prodSearch, origProds.prods);
-            })
-            return filteredGroups;
-        } else {
-            // Filter by product search string
-            return prodGrpArr;
-        }
-    }
     groupFilterChanged(groupStr) {
         groupStr = groupStr || '';
         this.groupSearchStr = groupStr;
-        console.log(groupStr);
-        this.prodGroupArr = this.filterProductGroups(groupStr, this.prodGroupArrOrig, this.prodSearchStr);
+        this.prodGroupArr = this.productsToGroups(this.applyFiltersOnProds(this.prodSearchStr, this.groupSearchStr, this.products));
         
     }
 
-    filterProducts(filterStr, products) {
-        filterStr = filterStr.toLowerCase();
-        if (filterStr !== '') {
-            const productsFiltered = products.filter( (prod) => {
-                if(prod.name.toLowerCase().includes(filterStr)) {
-                    return prod;
-                }
-            });
-            return productsFiltered;
-        } else {
-            return products;
-        }
+    applyFiltersOnProds(nameFilter: String, groupNameFilter: String, products) {
+        nameFilter = nameFilter || '';
+        groupNameFilter = groupNameFilter || '';
+        return products.filter( (prod) => prod.name.toLowerCase().includes(nameFilter.toLowerCase()) && prod.groupName.toLowerCase().includes(groupNameFilter.toLowerCase()))
     }
+    productsToGroups(products:List<Product>) {
+        let productsGroups = [];
+        let prodGroupArr :Object[]= [];
+        products.forEach( (prod) => {
+            if (!productsGroups[prod.groupName]) {
+                productsGroups[prod.groupName] = {groupName: prod.groupName, prods: []};
+            }
+            productsGroups[prod.groupName].prods.push(prod);
+        });
+        
+        Object.keys(productsGroups).forEach( (key, ind) => {
+            prodGroupArr.push(productsGroups[key])    
+        })
+        return prodGroupArr;
+}
 
     addProduct(event) {
-        let addedProd = Object.assign({}, this.prodForm.value, {id: this.products.toArray().length});
-        this.products.unshift(addedProd);
-        this.addEnabled = false;
+        let addedProd = Object.assign({}, this.prodForm.value, {id: this.products.toArray().length+1});
+        var prodNew = new Product({
+            id: addedProd.id,
+            number: addedProd.number,
+            name: addedProd.name,
+            createdOn: new Date(),
+            createdBy: 'Admin',
+            groupName: addedProd.groupName,
+            lineName: addedProd.lineID
+        })
+        this.products = this.products.insert(0, prodNew);
+        this.prodGroupArr = this.productsToGroups(this.applyFiltersOnProds(this.prodSearchStr, this.groupSearchStr, this.products.toArray()));
         this.prodForm.reset();
+        this.addEnabled = false;
     }
     
     toggleAdd() {
@@ -126,7 +106,6 @@ export class ProductsComponent implements OnInit {
     
     searchProducts(newVal) {
         this.prodSearchStr = newVal || '';
-        this.filterChanged(this.prodSearchStr);
-        // console.log('Search Changed...', this.prodSearchStr);
+        this.prodsFilterChanged(this.prodSearchStr);
     }
 }

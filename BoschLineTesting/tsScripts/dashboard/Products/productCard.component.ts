@@ -1,9 +1,11 @@
 // ====== ./dashboard/Products/products.component.ts ======
 
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Params } from '@angular/router';
 import { ProductsService } from "../../services/products.service";
 import { NgForm } from '@angular/forms';
+import { Product } from '../../models/product.model';
 
 @Component({
     templateUrl: 'templates/dashboard/products/productCard.tpl.html',
@@ -14,9 +16,15 @@ import { NgForm } from '@angular/forms';
 // Component class
 export class ProductCardComponent implements OnInit {
     edit = false;
-    @Input() product;
+    form;
+    @Input() product: Product;
 
-    constructor(private productsService: ProductsService) { }
+    constructor(private productsService: ProductsService, formbuilder: FormBuilder) {
+        // this.form = formbuilder.group({
+        //     name: this.product.name,
+
+        // })
+    }
 
     ngOnInit() { }
 
@@ -26,6 +34,7 @@ export class ProductCardComponent implements OnInit {
 
     onSave(f: NgForm) {
         this.edit = false;
+        console.log(f.value);
     }
  }
 
