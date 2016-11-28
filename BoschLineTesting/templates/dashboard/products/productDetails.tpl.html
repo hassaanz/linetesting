@@ -9,14 +9,14 @@
 
         <md-card>
             <md-card-title>{{product.name | uppercase}}</md-card-title>
-            <md-card-subtitle><span class="text-primary">{{product.number}}</span></md-card-subtitle>
+            <h4 class="text-primary">{{product.number}}</h4>
             <md-card-content>
                 <div class="productDetailsCont">
                     <md-list class="prodDetSec" style="flex:2" dense>
-                        <h3>Product Lines</h3>
-                        <md-list-item>Line 1</md-list-item>
+                        <h3>Product Line</h3>
+                        <h4 class="text-primary">{{product.Line}}</h4>
                     </md-list>
-                    <md-list class="prodDetSec" style="flex:1">
+                    <!--<md-list class="prodDetSec" style="flex:1">
                         <md-list-item class="prodDetTxt"> 
                             <p class="" md-line>Created On</p>
                             <span class="desc"  md-line>{{product.createdOn | date: "fullDate"}}</span> 
@@ -25,7 +25,7 @@
                             <p class="" md-line>Created By</p>
                             <span class="desc"  md-line>{{product.createdBy}}</span> 
                         </md-list-item>
-                    </md-list>
+                    </md-list>-->
                 </div>
             </md-card-content>
             <md-card-actions>
@@ -33,15 +33,16 @@
             </md-card-actions>
         </md-card>
         <md-card class="obsCard">
-            <p>Please choose an observation from the right to view / modify values.</p>
+            <i md-icon class="material-icons md-24 obsFieldIcon text-warning">info</i>
+            <span class="text-warning">Please choose an observation from the right to view / modify values.</span>
         </md-card>
     </div>
     <div class="observationList">
-        <md-list dense>
-            <h4>Product Observations</h4>
-            <md-list-item>Line 1</md-list-item>
-            <md-list-item>Line 2</md-list-item>
-            <md-list-item>Line 3</md-list-item>
-        </md-list>
+        <div class="obsListHead">
+            <h3 align="center">Product Tests</h3>
+        </div>
+        <div class="obListItems">
+            <bsh-observation-list [prodNumber]="product.id"></bsh-observation-list>
+        </div>
     </div>
 </div>

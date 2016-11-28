@@ -1,9 +1,15 @@
-<md-card>
-    <md-card-title>{{obs.number}}</md-card-title>
+
+<md-card class="obsListCard">
+    <md-card-title-group class="obsTitle">
+        <md-card-title><strong>{{observation.number}}</strong></md-card-title>
+        <md-card-subtitle class="md-18 subText">{{observation.shortText}}</md-card-subtitle>
+    </md-card-title-group>
     <md-card-content>
         <div class="obsField">
-            <h5><i md-icon class="material-icons md-24 obsFieldIcon">build</i>Description</h5>
-            <p>{{obs.shortText}}</p>
+            <h4><i md-icon class="material-icons md-24 obsFieldIcon">build</i>{{observation.toolNumber}}</h4>
+            <h4><i md-icon class="material-icons md-24 obsFieldIcon">format_paint</i>{{observation.insMetKey}}</h4>
+            <h5><i md-icon class="material-icons md-24 obsFieldIcon">group_work</i>{{observation.maintainanceDesc}}</h5>
+            <p class="md-36"><strong>{{observation.inspectionChar}}</strong></p>
         </div>
    </md-card-content>
 </md-card>

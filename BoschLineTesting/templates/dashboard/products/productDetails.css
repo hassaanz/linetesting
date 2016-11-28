@@ -27,7 +27,27 @@ div.productDetails {
     flex: 4;
 }
 div.observationList {
-    
     margin-left: 30px;
-    width: 200px;
+    width: 350px;
+    height: 100%;
+    /*border-left: solid #AFAFAF 2px;*/
+    overflow-y: scroll;
+}
+div.observationList::-webkit-scrollbar-thumb {
+	background-color: #929292;
+}
+div.observationList::-webkit-scrollbar-track {
+	border-radius: 15px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #FFFFFF;
+}
+div.observationList::-webkit-scrollbar {
+    width: 12px;
+	background-color: #F5F5F5;
+    opacity: 0;
+}
+
+div.obListItems {
+    flex-direction: row;
 }

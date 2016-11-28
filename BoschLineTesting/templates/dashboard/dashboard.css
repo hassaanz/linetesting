@@ -1,9 +1,13 @@
 md-sidenav.bshSidebar {
     background-color : #F2F2F2;
-    width: 150px;
+    width: 220px;
 }
 md-list-item.sidenavListItem {
     flex: 1;
+    
+}
+.sideNavItem {
+    font-size: 32;
 }
 
 md-sidenav > md-nav-list > a > md-list-item > div {
@@ -20,6 +24,7 @@ a.sidenavItem:active {
 label.menuLbl {
     vertical-align: bottom;
     font-weight: normal;
+    font-size: 26;
 }
 
 label.menuLbl:hover{
@@ -27,6 +32,6 @@ label.menuLbl:hover{
 }
 
 span.menuSymb > i{
-    font-size: 20px;
+    font-size: 26;
     margin-right: 2px;
 }

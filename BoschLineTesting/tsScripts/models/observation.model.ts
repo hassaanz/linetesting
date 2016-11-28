@@ -27,7 +27,7 @@ export class Observation extends ObservationRecord {
     number: number;
     shortText: String;
     inspectionChar: String;
-    toolNumber: String;
+    toolNumber: number;
     inspectionMethod: String;
     maintainanceDesc: String;
     recordDesc: String;

@@ -1,0 +1,27 @@
+.obsFieldIcon {
+    margin-right: 10px; 
+}
+
+md-card.obsListCard {
+    background-color: #426073;
+    color: #A2A2A2;
+    -webkit-box-shadow: 10px 11px 13px -10px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 11px 13px -10px rgba(0,0,0,1);
+    box-shadow: 10px 11px 13px -10px rgba(0,0,0,1);
+}
+md-card.obsListCard:hover {
+    background-color: #426087;
+    color: #A2A2A2;
+    -webkit-box-shadow: 10px 11px 22px -10px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 11px 22px -10px rgba(0,0,0,1);
+    box-shadow: 10px 11px 22px -10px rgba(0,0,0,1);
+    cursor: pointer;
+}
+
+.subText {
+    font-weight: 200;
+    color: #A2A2A2;
+}
+.obsTitle {
+    border-bottom: solid 2px #A22141;
+}

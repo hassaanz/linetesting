@@ -15,14 +15,15 @@ export class ProductObservationService {
     }
 
     loadInitialData() {
-        let observation = (<Object[]>this.productsObservationBackend.getAllObservations().toArray()).map( (obs: any) =>
-            new Observation({
+        let observation = (<Object[]>this.productsObservationBackend.getAllObservations().toArray()).map( (obs: any) => {
+            console.log(obs);
+            return new Observation({
                 number: obs.number,
-                shortText: obs.shortText,
+                shortText: obs.shorttext,
                 inspectionChar: obs.inspectionChar,
                 toolNumber: obs.toolNumber,
                 inspectionMethod: obs.inspectionMethod,
-                maintainanceDesc: obs.maintainanceDesc,
+                maintainanceDesc: obs.maintiananceDesc,
                 recordDesc: obs.recordDesc,
                 insMetKey: obs.insMetKey,
                 prodResDesc: obs.prodResDesc,
@@ -31,7 +32,8 @@ export class ProductObservationService {
                 validTo: obs.validTo,
                 createdOn: obs.createdOn,
                 prodNum: obs.prodNum
-            }));
+            })
+        });
         this._productObservationSource.next(List(observation));
     }
 
