@@ -1,3 +1,3 @@
 <div class="obsListItem" *ngFor="let obs of observations">
-    <bsh-observation-list-item [observation]="obs" [selectedID]="selectedObs"></bsh-observation-list-item>
+    <bsh-observation-list-item [observation]="obs" [selectedID]="selectedObs" (obsSelected) = "onObsSelect($event)"></bsh-observation-list-item>
 </div>

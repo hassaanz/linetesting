@@ -1,13 +1,7 @@
 <div class="productDetailsPage">
     <div class="productDetails">
-        <div>
-            <a [routerLink]="['/dash/products/']">
-                <button md-icon-button color="primary"><i md-icon class="text-primary material-icons md-24">arrow_back</i></button>
-            </a>
-            <span class="h2 <text-primary></text-primary>">Product Details</span>
-        </div>
-
-        <md-card>
+        <md-card class="prorDetCardSec">
+            <md-card-title><span class="h2 text-primary">Product Details</span></md-card-title>
             <md-card-title>{{product.name | uppercase}}</md-card-title>
             <h4 class="text-primary">{{product.number}}</h4>
             <md-card-content>
@@ -16,25 +10,157 @@
                         <h3>Product Line</h3>
                         <h4 class="text-primary">{{product.Line}}</h4>
                     </md-list>
-                    <!--<md-list class="prodDetSec" style="flex:1">
-                        <md-list-item class="prodDetTxt"> 
-                            <p class="" md-line>Created On</p>
-                            <span class="desc"  md-line>{{product.createdOn | date: "fullDate"}}</span> 
-                        </md-list-item>
-                        <md-list-item class="prodDetTxt"> 
-                            <p class="" md-line>Created By</p>
-                            <span class="desc"  md-line>{{product.createdBy}}</span> 
-                        </md-list-item>
-                    </md-list>-->
-                </div>
+                 </div>
             </md-card-content>
             <md-card-actions>
                 <!--<button md-button>EDIT</button>-->
             </md-card-actions>
         </md-card>
-        <md-card class="obsCard">
-            <i md-icon class="material-icons md-24 obsFieldIcon text-warning">info</i>
-            <span class="text-warning">Please choose an observation from the right to view / modify values.</span>
+        <md-card *ngIf="!selectedObs">
+            <md-card-title>
+                Select Card
+            </md-card-title>
+            <md-card-content>
+                <div id="notSelectedObs">
+                    <i md-icon class="material-icons md-24 obsFieldIcon text-warning">info</i>
+                    <span class="text-warning">Please choose an observation from the right to view / modify values.</span>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card class="obsCard" *ngIf="selectedObs">
+            <md-card-title>
+                <h2>Test Details</h2>
+            </md-card-title>
+            <md-card-content>
+                <div class="testDetailsCont" *ngIf="!editTest">
+                    <div class="testInfoField">
+                        <h2 md-line>Number</h2>
+                        <p md-line>{{selectedObs.number}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Inspection Characterestics</h2>
+                        <p md-line>{{selectedObs.inspectionChar}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Tool Number</h2>
+                        <p md-line>{{selectedObs.toolNumber || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Inspection Method</h2>
+                        <p md-line>{{selectedObs.inspectionMethod || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Maintainance Description</h2>
+                        <p md-line>{{selectedObs.maintainanceDesc || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Record Description</h2>
+                        <p md-line>{{selectedObs.recordDesc || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Instruction Method Key</h2>
+                        <p md-line>{{selectedObs.insMetKey || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Product Result Description</h2>
+                        <p md-line>{{selectedObs.prodResDesc || 'NO RECORD'}}</p>
+                    </div>
+                    <div class="testInfoField">
+                        <h2 md-line>Responsible Description</h2>
+                        
+                        <p md-line>{{selectedObs.respDesc || 'NO RECORD'}}</p>
+                    </div>
+                </div>
+
+                <form *ngIf="editTest">
+                    <div class="testDetailsCont" >
+                        <div class="testInfoField">
+                            <h3 md-line>Number</h3>
+                            <md-input name="number" required placeholder="Enter Number" ngControl="number"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Inspection Characterestics</h3>
+                            <md-input name="inspectionChar" required placeholder="Enter Inspection Characterestics" ngControl="inspectionChar"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Tool Number</h3>
+                            <md-input name="toolNumber" required placeholder="Enter Tool Number" ngControl="toolNumber"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Inspection Method</h3>
+                            <md-input name="inspectionMethod" required placeholder="Enter Inspection Method" ngControl="inspectionMethod"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Maintainance Description</h3>
+                            <md-input name="maintainanceDesc" required placeholder="Enter Maintainance Description" ngControl="maintainanceDesc"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Record Description</h3>
+                            <md-input name="recordDesc" required placeholder="Enter Record Description" ngControl="recordDesc"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Instruction Method Key</h3>
+                            <md-input name="insMetKey" required placeholder="Enter Instruction Method Key" ngControl="insMetKey"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Result Description</h3>
+                            <md-input name="prodResDesc" required placeholder="Enter Result Description" ngControl="prodResDesc"></md-input>
+                        </div>
+                        <div class="testInfoField">
+                            <h3 md-line>Responsible Description</h3>
+                            <md-input name="respDesc" required placeholder="Enter Responsible Description" ngControl="respDesc"></md-input>
+                        </div>
+                    </div>
+                </form>
+            </md-card-content>
+            <md-card-actions>
+                <button md-icon-button *ngIf="editTest" (click)="saveTest()"><i md-icon class="material-icons md-24 text-primary">save</i></button>
+                <button md-icon-button *ngIf="!editTest" (click)="editTest = true"><i md-icon class="material-icons md-24">edit</i></button>
+            </md-card-actions>
+        </md-card>
+        <md-card class="obsCard" *ngIf="selectedObs">
+            <md-card-title>
+                <h2>Measurements</h2>
+            </md-card-title>
+            <md-card-content>
+                    <div class="testDetailsCont" *ngIf="!editTestMeas">
+                        <div class="testInfoField">
+                            <h2 md-line>Minimum</h2>
+                            <p md-line>{{selectedObs.min || 'NO RECORD'}}</p>
+                        </div>
+                        <div class="testInfoField">                        
+                            <h2 md-line>Maximum</h2>
+                            <p md-line>{{selectedObs.max  || 'NO RECORD'}}</p>
+                        </div>
+                        <div class="testInfoField">                        
+                            <h2 md-line>Precision</h2>
+                            <p md-line>{{selectedObs.precision || 'NO RECORD'}}</p>
+                        </div>
+                    </div>
+                <form *ngIf="editTestMeas">
+                    <md-slide-toggle color="primary" [(ngModel)]="isBoolMeas" name="isBoolMeas" ngControl="isBoolMeas">
+                        <h4>Is Yes / No?</h4>
+                    </md-slide-toggle>
+                    <div class="testDetailsCont">
+                        <div class="testInfoField">
+                            <h3 md-line>Minimum</h3>
+                            <md-input name="minVal" required placeholder="Enter Minimum Value" ngControl="minVal"></md-input>
+                        </div>
+                        <div class="testInfoField">                        
+                            <h3 md-line>Maximum</h3>
+                            <md-input name="maxVal" required placeholder="Enter Maximum Value" ngControl="maxVal"></md-input>
+                        </div>
+                        <div class="testInfoField">                        
+                            <h3 md-line>Precision</h3>
+                            <md-input name="precVal" required placeholder="Enter Precision Value" ngControl="precVal"></md-input>
+                        </div>
+                    </div>
+                </form>
+            </md-card-content>
+            <md-card-actions>
+                <button md-icon-button *ngIf="editTestMeas" (click)="saveTestMeas()"><i md-icon class="material-icons md-24 text-primary">save</i></button>
+                <button md-icon-button *ngIf="!editTestMeas" (click)="editTestMeas = true"><i md-icon class="material-icons md-24">edit</i></button>
+            </md-card-actions>
         </md-card>
     </div>
     <div class="observationList">
@@ -42,7 +168,7 @@
             <h3 align="center">Product Tests</h3>
         </div>
         <div class="obListItems">
-            <bsh-observation-list [prodNumber]="product.id"></bsh-observation-list>
+            <bsh-observation-list [prodNumber]="product.id" (obsSelect)="onObsSelect($event)"></bsh-observation-list>
         </div>
     </div>
 </div>

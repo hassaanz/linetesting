@@ -9,25 +9,25 @@
             </div>
         </md-toolbar>
         <md-nav-list>
-            <a class="sidenavItem" [routerLink]="['/dash/home']">
-                <md-list-item class="sidenavListItem">
+            <md-list-item class="sidenavListItem sidenavListItemSelected">
+                <a class="sidenavItem" [routerLink]="['/dash/home']">
                     <span class="menuSymb"><i md-icon class="material-icons">home</i></span>
                     <label class="menuLbl">Home</label>
-                </md-list-item>
-            </a>
-            <md-list-item>
+                </a>
+            </md-list-item>
+            <md-list-item class="sidenavListItem">
                 <a class="sidenavItem" [routerLink]="['/dash/products']">
                     <span class="menuSymb"><i md-icon class="material-icons">party_mode</i></span>
                     <label class="menuLbl">Products</label>
                 </a>
             </md-list-item>
-            <md-list-item>
+            <md-list-item class="sidenavListItem">
                 <a class="sidenavItem" [routerLink]="['/dash/settings']">
                     <span class="menuSymb"><i md-icon class="material-icons">settings</i></span>
                     <label class="menuLbl">Settings</label>
                 </a>
             </md-list-item>
-            <md-list-item>
+            <md-list-item class="sidenavListItem">
                 <a class="sidenavItem" [routerLink]="['/dash/settings']">
                     <span class="menuSymb"><i md-icon class="material-icons">input</i></span>
                     <label class="menuLbl">Logout</label>
@@ -39,7 +39,7 @@
         </md-nav-list>            
     </md-sidenav>
     <md-content layout-padding>
-        <div style="height: 95%">
+        <div style="height: 95%" class="mainContent">
             <router-outlet></router-outlet>
         </div>
     </md-content>

@@ -42,4 +42,9 @@ export class ProductsService {
     let foundProd = this.productsBackend.findByID(id);
     return foundProd;
   }
+
+  // getproductByNumber(id: number) {
+  //   let foundProd = this.productsBackend.findByNumber(id);
+  //   return foundProd;
+  // }
 }

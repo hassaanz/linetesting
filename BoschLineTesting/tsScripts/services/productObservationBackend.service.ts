@@ -129,5 +129,10 @@ export class ProductObservationBackendService {
         }
         return null;
     }
+    findByNumber(num: number) {
+        return this.obsList.find( (obs) => {
+            return obs.number === num;
+        });
+    }
 
 }

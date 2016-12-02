@@ -12,10 +12,12 @@ md-list.prodDetSec {
     
     flex-direction: row;
 }
-
+md-card.prorDetCardSec {
+    margin-bottom: 20px;
+}
 md-card.obsCard {
     margin-top: 20px;
-    height: 400px;
+    /*height: 400px;*/
     font-size: 24px;
 }
 
@@ -29,8 +31,9 @@ div.productDetails {
 div.observationList {
     margin-left: 30px;
     width: 350px;
-    height: 100%;
-    /*border-left: solid #AFAFAF 2px;*/
+    height: 1000px;
+    padding-bottom: 50px;
+    border-bottom: solid #AFAFAF 2px;
     overflow-y: scroll;
 }
 div.observationList::-webkit-scrollbar-thumb {
@@ -50,4 +53,66 @@ div.observationList::-webkit-scrollbar {
 
 div.obListItems {
     flex-direction: row;
+}
+md-list.testDetailsList md-list-item {
+    justify-content: flex-start;
+   
+}
+md-list.testDetailsList md-list-item h2 {
+    font-weight: bold;
+    font-size: 16;
+}
+md-list.testDetailsList md-list-item i {
+    display: table;
+}
+
+div.testDetailsCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+div.testDetailsCont div.testInfoField {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 130px;
+    overflow: hidden;
+    text-align: left;
+    background-color: #DeDeDe;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    justify-content: center;
+    webkit-box-shadow: 3px 3px 1px 1px rgba(1, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 1px 1px rgba(1, 0, 0, 0.2);
+    box-shadow: 3px 3px 1px 1px rgba(1, 0, 0, 0.2);
+}
+
+div.testDetailsCont div.testInfoField h2{
+    font-weight: bold;
+    font-size: 20;
+    color: #525252;
+    text-align: center;
+}
+div.testDetailsCont div.testInfoField h2 i.material-icons {
+    font-size: 16;
+    margin-right: 5px;
+    color: #426297;
+    
+}
+div.testDetailsCont div.testInfoField p{
+    margin-top: 2px;
+    font-weight: lighter;
+    font-size: 16;
+    text-align: center;
+
+}
+div.testDetailsCont div.testInfoField i{
+    align-self: flex-start;
+    margin-left: 10px;
+    margin-top: 10px;
 }

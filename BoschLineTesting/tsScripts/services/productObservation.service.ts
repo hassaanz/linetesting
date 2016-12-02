@@ -56,4 +56,7 @@ export class ProductObservationService {
             return (obs.prodNum === prodID);
         })
     }
+    getObservationByNumber(obsNum: number) {
+        return this.productsObservationBackend.findByNumber(obsNum);
+    }
 }

@@ -1,5 +1,5 @@
 
-<md-card class="obsListCard">
+<md-card class="obsListCard" [ngClass]="{'selected': selected}" (click) = "select($event)">
     <md-card-title-group class="obsTitle">
         <md-card-title><strong>{{observation.number}}</strong></md-card-title>
         <md-card-subtitle class="md-18 subText">{{observation.shortText}}</md-card-subtitle>

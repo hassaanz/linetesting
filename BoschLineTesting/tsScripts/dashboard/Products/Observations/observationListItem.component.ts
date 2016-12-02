@@ -6,7 +6,7 @@ import {
     Input,
     Output,
     OnChanges,
-    SimpleChange
+    SimpleChanges
 } from '@angular/core';
 import { Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -22,18 +22,18 @@ import { ProductObservationService } from '../../../services/productObservation.
 export class ObservationListItemComponent implements OnChanges {
     @Input() observation: Observation;
     @Input() selectedID: number;
-    @Output() obsSelected = new EventEmitter<Number>();
+    @Output() obsSelected = new EventEmitter<Observation>();
     selected:Boolean = false;
 
     constructor(private observationService: ProductObservationService) { }
 
-    ngOnChanges() {
-        console.log('OBSERVATION LIST ITEM CHANGE: ', this.observation);
-        this.selected = this.observation.id === this.selectedID;
+    ngOnChanges(changes: SimpleChanges) {
+        // let selectedID = changes['selectedID'];
+        this.selected = this.observation.number === this.selectedID;
     }
 
     select() {
-        this.obsSelected.emit(this.observation.id);
+        this.obsSelected.emit(this.observation);
         this.selected = true;
     }
  }

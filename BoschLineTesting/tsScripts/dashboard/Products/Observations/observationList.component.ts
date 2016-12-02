@@ -1,6 +1,12 @@
 // ====== ./dashboard/Products/Observations/observationList.component.ts ======
 
-import { Component, Input, OnInit } from '@angular/core';
+import { 
+    Component,
+    Input,
+    OnInit,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Observation } from '../../../models/observation.model';
@@ -16,17 +22,20 @@ import { ProductObservationService } from '../../../services/productObservation.
 export class ObservationListComponent implements OnInit {
     edit = false;
     observations:List<Observation>;
+    selectedObs: number;
     @Input() prodNumber: number;
+    @Output() obsSelect = new EventEmitter<Observation>();
     
     constructor(private observationService: ProductObservationService) {
         observationService.observations.subscribe(
             res => {
-                console.log('Got Observations: ', res.toJS());
+                // console.log('Got Observations: ', res.toJS());
                 this.observations = res.toJS();
             },
             err => {
                 console.log("Error retrieving Observations");
-            })
+            }
+        );
     }
 
     ngOnInit() {
@@ -35,6 +44,12 @@ export class ObservationListComponent implements OnInit {
 
     editProd() {
         this.edit = true;
+    }
+
+    onObsSelect(obs: Observation, data) {
+        this.selectedObs = obs.number;
+        // console.log('Oservation selected event.', obs);
+        this.obsSelect.emit(obs);
     }
 
     onSave(f: NgForm) {

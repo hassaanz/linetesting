@@ -1,10 +1,11 @@
 // ====== ./dashboard/Products/productDetails.component.ts ======
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from "../../services/products.service";
 import { ProductObservationService } from "../../services/productObservation.service";
 import { NgForm } from '@angular/forms';
+import { Observation } from "../../models/observation.model";
 
 @Component({
     templateUrl: 'templates/dashboard/products/productDetails.tpl.html',
@@ -16,8 +17,12 @@ import { NgForm } from '@angular/forms';
 export class ProductDetailsComponent implements OnInit {
 
     private product;
+    editTestMeas: boolean = false;
+    editTest: boolean = false;
+    @Input() selectedObs:Observation = null;
     constructor(
         private productsService: ProductsService,
+        private observationService:ProductObservationService,
         private router: Router,
         private route: ActivatedRoute) {
     }
@@ -45,6 +50,17 @@ export class ProductDetailsComponent implements OnInit {
             ['../', { id: this.product} ],
             { relativeTo: this.route }
         );
+    }
+    onObsSelect($event) {
+        this.selectedObs = this.observationService.getObservationByNumber($event.number);
+        console.log('Found obs change event in productdetails comp');
+        console.log(this.selectedObs);
+    }
+    saveTestMeas() {
+        this.editTestMeas = false;
+    }
+    saveTest() {
+        this.editTest = false;
     }
  }
 
