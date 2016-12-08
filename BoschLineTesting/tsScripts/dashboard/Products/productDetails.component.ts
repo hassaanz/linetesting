@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from "../../services/products.service";
 import { ProductObservationService } from "../../services/productObservation.service";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { Observation } from "../../models/observation.model";
 
 @Component({
@@ -19,12 +19,33 @@ export class ProductDetailsComponent implements OnInit {
     private product;
     editTestMeas: boolean = false;
     editTest: boolean = false;
+    public testDetailsForm = this.formbuilder.group({
+        number: ["", Validators.required],
+        inspectionChar: ["", Validators.required],
+        toolNumber: ["", Validators.required],
+        inspectionMethod: ["", Validators.required],
+        maintainanceDesc: ["", Validators.required],
+        recordDesc: ["", Validators.required],
+        insMetKey: ["", Validators.required],
+        prodResDesc: ["", Validators.required],
+        respDesc: ["", Validators.required],
+
+    });
+    public testDataForm = this.formbuilder.group({
+        minVal: [0, Validators.required],
+        maxVal: [0, Validators.required],
+        precision: [0, Validators.required],
+        valBool: [false, Validators.required],
+        boolQuestion: ['', Validators.required]
+    });
+
     @Input() selectedObs:Observation = null;
     constructor(
         private productsService: ProductsService,
         private observationService:ProductObservationService,
         private router: Router,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        public formbuilder: FormBuilder) {
     }
 
     ngOnInit() {
@@ -53,14 +74,91 @@ export class ProductDetailsComponent implements OnInit {
     }
     onObsSelect($event) {
         this.selectedObs = this.observationService.getObservationByNumber($event.number);
-        console.log('Found obs change event in productdetails comp');
-        console.log(this.selectedObs);
+        let obs = this.selectedObs;
+        let formVals = {
+            number: obs.number,
+            inspectionMethod: obs.inspectionMethod || '',
+            inspectionChar: obs.inspectionChar || '',
+            toolNumber: obs.toolNumber || '',
+            maintainanceDesc: obs.maintainanceDesc || '',
+            recordDesc: obs.insMetKey || '',
+            insMetKey: obs.insMetKey || '',
+            prodResDesc: obs.prodResDesc || '',
+            respDesc: obs.respDesc || ''
+        };
+
+        let formDataVals = {
+            minVal: obs.minVal,
+            maxVal: obs.maxVal,
+            precision: obs.precision,
+            valBool: obs.valBool,
+            boolQuestion: obs.boolQuestion
+        }
+        // console.log("Form Vals to set", formVals);
+        this.testDetailsForm.patchValue(formVals);
+
+        this.testDataForm.patchValue(formDataVals);
+        // console.log("Set form Vals", this.testDetailsForm.value);
+        // console.log('Found obs change event in productdetails comp');
+        // console.log(this.selectedObs);
+    }
+    updateForm() {
+        let obs = this.selectedObs;
+        let formVals = {
+            number: obs.number,
+            inspectionMethod: obs.inspectionMethod,
+            inspectionChar: obs.inspectionChar,
+            toolNumber: obs.toolNumber,
+            maintainanceDesc: obs.maintainanceDesc,
+            recordDesc: obs.insMetKey,
+            insMetKey: obs.insMetKey,
+            prodResDesc: obs.prodResDesc,
+            respDesc: obs.respDesc,
+            minVal: obs.minVal,
+            maxVal: obs.maxVal,
+            precision: obs.precision,
+            valBool: obs.valBool,
+            boolQuestion: obs.boolQuestion
+        }
+        this.testDataForm.patchValue(formVals);
+        this.testDetailsForm.patchValue(formVals);
     }
     saveTestMeas() {
+        let formData = this.testDataForm.value;
+        this.selectedObs.minVal = formData.minVal;
+        this.selectedObs.maxVal = formData.maxVal;
+        this.selectedObs.precision = formData.precision;
+        this.selectedObs.valBool = formData.valBool;
+        this.selectedObs.boolQuestion = formData.boolQuestion;
+        
+        if (this.selectedObs.valBool) {
+            this.selectedObs.minVal = null;
+            this.selectedObs.maxVal = null;
+            this.selectedObs.precision = null;
+        } else {
+            this.selectedObs.boolQuestion = null;
+        }
+        
+        this.observationService.updateObservation(this.selectedObs);
         this.editTestMeas = false;
+        this.updateForm();
     }
-    saveTest() {
+    saveTestData() {
+        let formData = this.testDetailsForm.value;
+        this.selectedObs.number = formData.number;
+        this.selectedObs.inspectionMethod = formData.inspectionMethod;
+        this.selectedObs.toolNumber = formData.toolNumber;
+        this.selectedObs.maintainanceDesc = formData.maintainanceDesc;
+        this.selectedObs.recordDesc = formData.recordDesc;
+        this.selectedObs.insMetKey = formData.insMetKey;
+        this.selectedObs.prodResDesc = formData.prodResDesc;
+        this.selectedObs.respDesc = formData.respDesc;
+        
+
+        this.observationService.updateObservation(this.selectedObs);
         this.editTest = false;
+        this.updateForm();
     }
+
  }
 

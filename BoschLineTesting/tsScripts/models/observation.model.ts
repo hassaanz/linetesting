@@ -19,7 +19,12 @@ const ObservationRecord = Record({
     validFrom: '',
     validTo: '',
     createdOn: new Date(),
-    prodNum: '-1'
+    prodNum: '-1',
+    minVal: 0,
+    maxVal: 0,
+    precision: 0,
+    valBool: null,
+    boolQuestion: ''
 });
 
 export class Observation extends ObservationRecord {
@@ -38,6 +43,11 @@ export class Observation extends ObservationRecord {
     validTo: Date;
     createdOn: Date;
     prodNum: number;
+    minVal: number;
+    maxVal: number;
+    precision: number;
+    valBool: boolean;
+    boolQuestion: string
 
     constructor(props) {
         super(props);

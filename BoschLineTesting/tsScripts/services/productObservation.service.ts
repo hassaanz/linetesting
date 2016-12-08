@@ -11,12 +11,11 @@ export class ProductObservationService {
     private _productObservationSource: BehaviorSubject<List<Observation>> = new BehaviorSubject(List([]));
 
     constructor(private productsObservationBackend: ProductObservationBackendService) {
-        this.loadInitialData();
+        this.updateObsAndPublish();
     }
 
-    loadInitialData() {
+    updateObsAndPublish() {
         let observation = (<Object[]>this.productsObservationBackend.getAllObservations().toArray()).map( (obs: any) => {
-            console.log(obs);
             return new Observation({
                 number: obs.number,
                 shortText: obs.shorttext,
@@ -58,5 +57,9 @@ export class ProductObservationService {
     }
     getObservationByNumber(obsNum: number) {
         return this.productsObservationBackend.findByNumber(obsNum);
+    }
+    updateObservation(obs: Observation) {
+        this.updateObsAndPublish();
+        this.productsObservationBackend.updateObservation(obs);
     }
 }

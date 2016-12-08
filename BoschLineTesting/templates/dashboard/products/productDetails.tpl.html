@@ -72,50 +72,50 @@
                     </div>
                 </div>
 
-                <form *ngIf="editTest">
+                <form #tdForm="ngForm" [formGroup]="testDetailsForm" *ngIf="editTest" (ngSubmit)="saveTestData($event)">
                     <div class="testDetailsCont" >
                         <div class="testInfoField">
                             <h3 md-line>Number</h3>
-                            <md-input name="number" required placeholder="Enter Number" ngControl="number"></md-input>
+                            <md-input name="number" required placeholder="Enter Number" [formControl]="testDetailsForm.controls['number']"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Inspection Characterestics</h3>
-                            <md-input name="inspectionChar" required placeholder="Enter Inspection Characterestics" ngControl="inspectionChar"></md-input>
+                            <md-input name="inspectionChar" required placeholder="Enter Inspection Characterestics" [formControl]="testDetailsForm.controls.inspectionChar"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Tool Number</h3>
-                            <md-input name="toolNumber" required placeholder="Enter Tool Number" ngControl="toolNumber"></md-input>
+                            <md-input name="toolNumber" required placeholder="Enter Tool Number" [formControl]="testDetailsForm.controls.toolNumber"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Inspection Method</h3>
-                            <md-input name="inspectionMethod" required placeholder="Enter Inspection Method" ngControl="inspectionMethod"></md-input>
+                            <md-input name="inspectionMethod" required placeholder="Enter Inspection Method" [formControl]="testDetailsForm.controls.inspectionMethod"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Maintainance Description</h3>
-                            <md-input name="maintainanceDesc" required placeholder="Enter Maintainance Description" ngControl="maintainanceDesc"></md-input>
+                            <md-input name="maintainanceDesc" required placeholder="Enter Maintainance Description" [formControl]="testDetailsForm.controls.maintainanceDesc"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Record Description</h3>
-                            <md-input name="recordDesc" required placeholder="Enter Record Description" ngControl="recordDesc"></md-input>
+                            <md-input name="recordDesc" required placeholder="Enter Record Description" [formControl]="testDetailsForm.controls.recordDesc"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Instruction Method Key</h3>
-                            <md-input name="insMetKey" required placeholder="Enter Instruction Method Key" ngControl="insMetKey"></md-input>
+                            <md-input name="insMetKey" required placeholder="Enter Instruction Method Key" [formControl]="testDetailsForm.controls.insMetKey"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Result Description</h3>
-                            <md-input name="prodResDesc" required placeholder="Enter Result Description" ngControl="prodResDesc"></md-input>
+                            <md-input name="prodResDesc" required placeholder="Enter Result Description" [formControl]="testDetailsForm.controls.prodResDesc"></md-input>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Responsible Description</h3>
-                            <md-input name="respDesc" required placeholder="Enter Responsible Description" ngControl="respDesc"></md-input>
+                            <md-input name="respDesc" required placeholder="Enter Responsible Description" [formControl]="testDetailsForm.controls.respDesc"></md-input>
                         </div>
                     </div>
                 </form>
             </md-card-content>
             <md-card-actions>
-                <button md-icon-button *ngIf="editTest" (click)="saveTest()"><i md-icon class="material-icons md-24 text-primary">save</i></button>
-                <button md-icon-button *ngIf="!editTest" (click)="editTest = true"><i md-icon class="material-icons md-24">edit</i></button>
+                <button md-icon-button *ngIf="editTest" (click)="saveTestData()"><i md-icon class="material-icons md-24 text-primary">save</i></button>
+                <button md-icon-button *ngIf="!editTest" (click)="this.editTest=true"><i md-icon class="material-icons md-24">edit</i></button>
             </md-card-actions>
         </md-card>
         <md-card class="obsCard" *ngIf="selectedObs">
@@ -124,35 +124,44 @@
             </md-card-title>
             <md-card-content>
                     <div class="testDetailsCont" *ngIf="!editTestMeas">
-                        <div class="testInfoField">
+                        <div class="testInfoField" *ngIf="!selectedObs.valBool">
                             <h2 md-line>Minimum</h2>
-                            <p md-line>{{selectedObs.min || 'NO RECORD'}}</p>
+                            <p md-line>{{selectedObs.minVal || 'NO RECORD'}}</p>
                         </div>
-                        <div class="testInfoField">                        
+                        <div class="testInfoField" *ngIf="!selectedObs.valBool">                        
                             <h2 md-line>Maximum</h2>
-                            <p md-line>{{selectedObs.max  || 'NO RECORD'}}</p>
+                            <p md-line>{{selectedObs.maxVal  || 'NO RECORD'}}</p>
                         </div>
-                        <div class="testInfoField">                        
+                        <div class="testInfoField" *ngIf="!selectedObs.valBool">
                             <h2 md-line>Precision</h2>
                             <p md-line>{{selectedObs.precision || 'NO RECORD'}}</p>
                         </div>
+                        <div class="testInfoField" *ngIf="selectedObs.valBool">
+                            <h2 md-line>Question</h2>
+                            <p md-line>{{selectedObs.boolQuestion || 'NO RECORD'}}</p>
+                        </div>
+                        
                     </div>
-                <form *ngIf="editTestMeas">
-                    <md-slide-toggle color="primary" [(ngModel)]="isBoolMeas" name="isBoolMeas" ngControl="isBoolMeas">
+                <form *ngIf="editTestMeas" [formGroup]="testDataForm" (ngSubmit) = "saveTestMeas()">
+                    <md-slide-toggle color="primary" name="isBoolMeas" [formControl]="testDataForm.controls.valBool">
                         <h4>Is Yes / No?</h4>
                     </md-slide-toggle>
                     <div class="testDetailsCont">
-                        <div class="testInfoField">
+                        <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Minimum</h3>
-                            <md-input name="minVal" required placeholder="Enter Minimum Value" ngControl="minVal"></md-input>
+                            <md-input name="minVal" required placeholder="Enter Minimum Value" [formControl]="testDataForm.controls.minVal"></md-input>
                         </div>
-                        <div class="testInfoField">                        
+                        <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Maximum</h3>
-                            <md-input name="maxVal" required placeholder="Enter Maximum Value" ngControl="maxVal"></md-input>
+                            <md-input name="maxVal" required placeholder="Enter Maximum Value" [formControl]="testDataForm.controls.maxVal"></md-input>
                         </div>
-                        <div class="testInfoField">                        
+                        <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Precision</h3>
-                            <md-input name="precVal" required placeholder="Enter Precision Value" ngControl="precVal"></md-input>
+                            <md-input name="precision" required placeholder="Enter Precision Value" [formControl]="testDataForm.controls.precision"></md-input>
+                        </div>
+                        <div class="testInfoField" *ngIf="testDataForm.controls.valBool.value">
+                            <h3 md-line>Question</h3>
+                            <md-input name="boolQuestion" required placeholder="Enter Question" [formControl]="testDataForm.controls.boolQuestion"></md-input>
                         </div>
                     </div>
                 </form>
@@ -165,7 +174,10 @@
     </div>
     <div class="observationList">
         <div class="obsListHead">
-            <h3 align="center">Product Tests</h3>
+            <h3 align="center">
+                <button md-icon-button (click)="addObs = true"><i md-icon class="material-icons md-24">add</i></button>
+                Product Tests
+            </h3>
         </div>
         <div class="obListItems">
             <bsh-observation-list [prodNumber]="product.id" (obsSelect)="onObsSelect($event)"></bsh-observation-list>

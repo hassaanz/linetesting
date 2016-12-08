@@ -22,7 +22,9 @@ import { ProductObservationService } from '../../../services/productObservation.
 export class ObservationListComponent implements OnInit {
     edit = false;
     observations:List<Observation>;
+    filteredObservations: List<Observation>;
     selectedObs: number;
+    obsSearchStr: string = '';
     @Input() prodNumber: number;
     @Output() obsSelect = new EventEmitter<Observation>();
     
@@ -30,7 +32,8 @@ export class ObservationListComponent implements OnInit {
         observationService.observations.subscribe(
             res => {
                 // console.log('Got Observations: ', res.toJS());
-                this.observations = res.toJS();
+                this.observations = res;
+                this.filteredObservations = this.filterObs(this.obsSearchStr, this.observations);
             },
             err => {
                 console.log("Error retrieving Observations");
@@ -40,6 +43,18 @@ export class ObservationListComponent implements OnInit {
 
     ngOnInit() {
         console.log('Init Obs List. Product Number: ', this.prodNumber);
+    }
+
+    filterObs(filterStr: string, origObs: List<Observation>):List<Observation> {
+        if (filterStr === '') {
+            return origObs;
+        }
+        return origObs.filter( obs => obs.number.toString().includes(filterStr)).toList();
+    }
+
+    obsFilterChanged(value) {
+        console.log(value);
+        this.filteredObservations = this.filterObs(value, this.observations);
     }
 
     editProd() {
