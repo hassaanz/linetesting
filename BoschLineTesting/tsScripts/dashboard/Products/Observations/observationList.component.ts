@@ -31,7 +31,7 @@ export class ObservationListComponent implements OnInit {
     constructor(private observationService: ProductObservationService) {
         observationService.observations.subscribe(
             res => {
-                // console.log('Got Observations: ', res.toJS());
+                console.log('Got Observations: ', res.toJS());
                 this.observations = res;
                 this.filteredObservations = this.filterObs(this.obsSearchStr, this.observations);
             },

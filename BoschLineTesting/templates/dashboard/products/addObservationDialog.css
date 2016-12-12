@@ -1,0 +1,50 @@
+form.addTestFormCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*margin-top: 15px;*/
+}
+form.addTestFormCont div.addTestFieldCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+form.addTestFormCont div.addTestFieldCont md-input.addTestFormInp {
+    flex: 2;
+}
+form.addTestFormCont div.addTestFieldCont div.addTestFieldLabel {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #515151;
+    flex: 1;
+    text-transform: uppercase;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+form.addTestFormCont div.addTestFieldCont div.addTestFieldLabel i.addTestFormIcon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #717171;
+    align-self: center;
+    vertical-align: bottom;
+}
+
+div.addTestFormAction {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    /*margin-top: 5px;*/
+}
+button.addTestFormActionButton {
+    margin-left: 10px;
+}
+
+div#dialogMain {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}

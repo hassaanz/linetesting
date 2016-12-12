@@ -18,11 +18,11 @@ export class ProductObservationService {
         let observation = (<Object[]>this.productsObservationBackend.getAllObservations().toArray()).map( (obs: any) => {
             return new Observation({
                 number: obs.number,
-                shortText: obs.shorttext,
+                shortText: obs.shortText,
                 inspectionChar: obs.inspectionChar,
                 toolNumber: obs.toolNumber,
                 inspectionMethod: obs.inspectionMethod,
-                maintainanceDesc: obs.maintiananceDesc,
+                maintainanceDesc: obs.maintainanceDesc,
                 recordDesc: obs.recordDesc,
                 insMetKey: obs.insMetKey,
                 prodResDesc: obs.prodResDesc,
@@ -42,7 +42,8 @@ export class ProductObservationService {
 
     addObservation(newObs: Observation) {
         let saved = this.productsObservationBackend.createObservation(newObs);
-        this._productObservationSource.next(this._productObservationSource.getValue().push(saved));
+        this.updateObsAndPublish();
+        // this._productObservationSource.next(this._productObservationSource.getValue().push(saved));
     }
 
     getObservationByID(id: number) {

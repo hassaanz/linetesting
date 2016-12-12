@@ -89,7 +89,7 @@ export class ProductObservationBackendService {
 
     createObservation(newObs: Observation) {
 
-        this.obsList.push(newObs);
+        this.obsList = this.obsList.unshift(newObs.toJS());
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/json; charset=utf-8');
 

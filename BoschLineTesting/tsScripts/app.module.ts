@@ -29,6 +29,8 @@ import { ProductDetailsComponent } from './dashboard/Products/productDetails.com
 import { ObservationListComponent } from './dashboard/Products/Observations/observationList.component';
 import { ObservationListItemComponent } from './dashboard/Products/Observations/observationListItem.component';
 
+import { AddObservationDialog } from './dashboard/Products/addObservationDialog.component';
+
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SideNavComponent } from './sidenav/sidenav.component';
@@ -49,7 +51,7 @@ import { routing } from './app.routes';
 
 @NgModule({
     imports: [
-        MaterialModule,
+        MaterialModule.forRoot(),
         Ng2MaterialModule,
         BrowserModule,
         FormsModule,
@@ -69,6 +71,7 @@ import { routing } from './app.routes';
         DashboardComponent,
         ProductsComponent,
         ProductCardComponent,
+        AddObservationDialog,
         ProductDetailsComponent,
         ObservationListComponent,
         ObservationListItemComponent,
@@ -85,6 +88,9 @@ import { routing } from './app.routes';
         ProductObservationService,
         ProductCategoryBackendService,
         ProductObservationBackendService,
+    ],
+    entryComponents: [
+        AddObservationDialog
     ],
     bootstrap: [ AppComponent ]
 })

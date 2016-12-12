@@ -159,9 +159,9 @@
                             <h3 md-line>Precision</h3>
                             <md-input name="precision" required placeholder="Enter Precision Value" [formControl]="testDataForm.controls.precision"></md-input>
                         </div>
-                        <div class="testInfoField" *ngIf="testDataForm.controls.valBool.value">
+                        <div class="testInfoField testInfoQuestion" *ngIf="testDataForm.controls.valBool.value">
                             <h3 md-line>Question</h3>
-                            <md-input name="boolQuestion" required placeholder="Enter Question" [formControl]="testDataForm.controls.boolQuestion"></md-input>
+                            <md-textarea name="boolQuestion" required placeholder="Enter Question" [formControl]="testDataForm.controls.boolQuestion"></md-textarea>
                         </div>
                     </div>
                 </form>
@@ -175,9 +175,9 @@
     <div class="observationList">
         <div class="obsListHead">
             <h3 align="center">
-                <button md-icon-button (click)="addObs = true"><i md-icon class="material-icons md-24">add</i></button>
                 Product Tests
             </h3>
+            <button md-raised-button (click)="openAddObs()">NEW</button>
         </div>
         <div class="obListItems">
             <bsh-observation-list [prodNumber]="product.id" (obsSelect)="onObsSelect($event)"></bsh-observation-list>

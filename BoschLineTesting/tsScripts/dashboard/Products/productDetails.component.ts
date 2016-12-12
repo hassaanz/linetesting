@@ -1,11 +1,13 @@
 // ====== ./dashboard/Products/productDetails.component.ts ======
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from "../../services/products.service";
 import { ProductObservationService } from "../../services/productObservation.service";
 import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { Observation } from "../../models/observation.model";
+import { MdDialog, MdDialogRef, MdDialogConfig } from "@angular/material";
+import { AddObservationDialog } from './addObservationDialog.component';
 
 @Component({
     templateUrl: 'templates/dashboard/products/productDetails.tpl.html',
@@ -15,7 +17,7 @@ import { Observation } from "../../models/observation.model";
 
 // Component class
 export class ProductDetailsComponent implements OnInit {
-
+    addObsDialogRef: MdDialogRef<AddObservationDialog>;
     private product;
     editTestMeas: boolean = false;
     editTest: boolean = false;
@@ -45,7 +47,9 @@ export class ProductDetailsComponent implements OnInit {
         private observationService:ProductObservationService,
         private router: Router,
         private route: ActivatedRoute,
-        public formbuilder: FormBuilder) {
+        public formbuilder: FormBuilder,
+        public dialog: MdDialog,
+        private viewContainerRef:ViewContainerRef) {
     }
 
     ngOnInit() {
@@ -74,6 +78,9 @@ export class ProductDetailsComponent implements OnInit {
     }
     onObsSelect($event) {
         this.selectedObs = this.observationService.getObservationByNumber($event.number);
+        // if (this.selectedObs) {
+        //     this.selectedObs = this.selectedObs.toMap().toJS();
+        // }
         let obs = this.selectedObs;
         let formVals = {
             number: obs.number,
@@ -139,6 +146,7 @@ export class ProductDetailsComponent implements OnInit {
             this.selectedObs.boolQuestion = null;
         }
         
+        console.log('Here without error');
         this.observationService.updateObservation(this.selectedObs);
         this.editTestMeas = false;
         this.updateForm();
@@ -154,11 +162,36 @@ export class ProductDetailsComponent implements OnInit {
         this.selectedObs.prodResDesc = formData.prodResDesc;
         this.selectedObs.respDesc = formData.respDesc;
         
-
+        console.log('Here without error');
         this.observationService.updateObservation(this.selectedObs);
         this.editTest = false;
         this.updateForm();
     }
-
+    openAddObs() {
+        let dialogOptions = new MdDialogConfig();
+        const opts = {
+            disableClose: false,
+            width: "50%",
+            height: "60%",
+            position: {
+                top: "10%",
+                left: "25%"
+            },
+            viewContainerRef: this.viewContainerRef
+        }
+        dialogOptions.disableClose = opts.disableClose;
+        dialogOptions.width = opts.width;
+        dialogOptions.height = opts.height;
+        dialogOptions.position = opts.position;
+        dialogOptions.viewContainerRef = opts.viewContainerRef;
+        this.addObsDialogRef = this.dialog.open(AddObservationDialog, dialogOptions);
+        this.addObsDialogRef.afterClosed()
+        .subscribe( resultObj => {
+            if (resultObj.status) {
+                console.log('Got Obs from Dialog: ', resultObj.value);
+                this.observationService.addObservation(resultObj.value);
+            }
+        })
+    }
  }
 
