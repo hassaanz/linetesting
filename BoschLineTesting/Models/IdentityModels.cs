@@ -18,10 +18,10 @@ namespace BoschLineTesting.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : System.Data.Entity.DbContext
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
         
@@ -29,5 +29,29 @@ namespace BoschLineTesting.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Line> Lines { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Changeover> Changeovers { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Product_Group> Product_Groups { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Product_Test> Product_Tests { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Test> Tests { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.ProductionLine> ProductionLines { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.SAPInput> SAPInputs { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Role> Roles { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.User_Role> User_Roles { get; set; }
+
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.Test_Result> Test_Results { get; set; }
     }
 }
