@@ -50,7 +50,7 @@ namespace BoschLineTesting.Models
 
         public System.Data.Entity.DbSet<BoschLineTesting.Models.User> Users { get; set; }
 
-        public System.Data.Entity.DbSet<BoschLineTesting.Models.User_Role> User_Roles { get; set; }
+        public System.Data.Entity.DbSet<BoschLineTesting.Models.UserRoles> UserRoles { get; set; }
 
         public System.Data.Entity.DbSet<BoschLineTesting.Models.Test_Result> Test_Results { get; set; }
     }

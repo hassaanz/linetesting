@@ -15,8 +15,7 @@ namespace BoschLineTesting.Models
         public int user_id { get; set; }
         [Column("nt_username")]
         public string nt_username { get; set; }
-        [Column("user_roles_id")]
-        public int user_roles_id { get; set; }
+        
         [Column("Created_By")]
         public int Created_By { get; set; }
         [Column("Created_On")]
@@ -29,7 +28,7 @@ namespace BoschLineTesting.Models
         public int line_id { get; set; }
 
         [ForeignKey("user_roles_id")]
-        public virtual ICollection<User_Role> roles { get; set; }
+        public virtual ICollection<UserRoles> roles { get; set; }
         [ForeignKey("line_id")]
         public virtual Line line { get; set; }
     }

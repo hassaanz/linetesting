@@ -18,16 +18,16 @@ namespace BoschLineTesting.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/UserRoles
-        public IQueryable<User_Role> GetUser_Roles()
+        public IQueryable<UserRoles> GetUser_Roles()
         {
-            return db.User_Roles;
+            return db.UserRoles;
         }
 
         // GET: api/UserRoles/5
-        [ResponseType(typeof(User_Role))]
+        [ResponseType(typeof(UserRoles))]
         public async Task<IHttpActionResult> GetUser_Role(int id)
         {
-            User_Role user_Role = await db.User_Roles.FindAsync(id);
+            UserRoles user_Role = await db.UserRoles.FindAsync(id);
             if (user_Role == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace BoschLineTesting.Controllers
 
         // PUT: api/UserRoles/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUser_Role(int id, User_Role user_Role)
+        public async Task<IHttpActionResult> PutUser_Role(int id, UserRoles user_Role)
         {
             if (!ModelState.IsValid)
             {
@@ -72,31 +72,31 @@ namespace BoschLineTesting.Controllers
         }
 
         // POST: api/UserRoles
-        [ResponseType(typeof(User_Role))]
-        public async Task<IHttpActionResult> PostUser_Role(User_Role user_Role)
+        [ResponseType(typeof(UserRoles))]
+        public async Task<IHttpActionResult> PostUser_Role(UserRoles user_Role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.User_Roles.Add(user_Role);
+            db.UserRoles.Add(user_Role);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = user_Role.user_roles_id }, user_Role);
         }
 
         // DELETE: api/UserRoles/5
-        [ResponseType(typeof(User_Role))]
+        [ResponseType(typeof(UserRoles))]
         public async Task<IHttpActionResult> DeleteUser_Role(int id)
         {
-            User_Role user_Role = await db.User_Roles.FindAsync(id);
+            UserRoles user_Role = await db.UserRoles.FindAsync(id);
             if (user_Role == null)
             {
                 return NotFound();
             }
 
-            db.User_Roles.Remove(user_Role);
+            db.UserRoles.Remove(user_Role);
             await db.SaveChangesAsync();
 
             return Ok(user_Role);
@@ -113,7 +113,7 @@ namespace BoschLineTesting.Controllers
 
         private bool User_RoleExists(int id)
         {
-            return db.User_Roles.Count(e => e.user_roles_id == id) > 0;
+            return db.UserRoles.Count(e => e.user_roles_id == id) > 0;
         }
     }
 }

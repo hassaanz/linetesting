@@ -16,10 +16,10 @@ namespace BoschLineTesting.Models
         [Column("product_name")]
         public string product_name { get; set; }
         [Column("Created_By")]
-        public int Created_By { get; set; }
+        public int? Created_By { get; set; }
         [Column("Created_On")]
-        public DateTime Created_On { get; set; }
+        public DateTime? Created_On { get; set; }
         [Column("Group_id")]
-        public int Group_id { get; set; }
+        public int? Group_id { get; set; }
     }
 }
