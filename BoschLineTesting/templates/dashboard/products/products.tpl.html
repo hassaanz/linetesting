@@ -2,11 +2,15 @@
     <div class="searchToolbox">
         <div class="searchBox">
             <i md-icon class="material-icons md-24 fabBut" style="vertical-align: center" *ngIf="!addEnabled">search</i>
-            <md-input class="searchImp" align="right" name="searchProducts" placeholder="Search Products" #searchBox [(ngModel)]="prodSearchStr" (ngModelChange)="prodsFilterChanged($event)"></md-input>
+            <md-input-container>
+                <input mdInput class="searchImp" align="right" name="searchProducts" placeholder="Search Products" #searchBox [(ngModel)]="prodSearchStr" (ngModelChange)="prodsFilterChanged($event)"/>
+            </md-input-container>
         </div>
         <div class="searchBox">
             <i md-icon class="material-icons md-24 fabBut" *ngIf="!addEnabled">search</i>
-            <md-input class="searchImp" align="right" name="searchGroup" placeholder="Search Groups" #grpSearchBox [(ngModel)]="groupSearchStr"  (ngModelChange)="groupFilterChanged($event)"></md-input>
+            <md-input-container>
+                <input mdInput class="searchImp" align="right" name="searchGroup" placeholder="Search Groups" #grpSearchBox [(ngModel)]="groupSearchStr"  (ngModelChange)="groupFilterChanged($event)"/>
+            </md-input-container>
         </div>
     </div>
     <button md-mini-fab (click)="toggleAdd()" color="primary">
@@ -20,18 +24,18 @@
             </md-card-title>
             <md-card-content>
                 <div class="editContainer">
-                        <p class="prodinfo">
-                            <md-input name="name" [formControl]="prodForm.controls['name']" required placeholder="Enter Product Name" ></md-input>
-                        </p>
-                        <p class="prodinfo">
-                            <md-input name="number" required [formControl]="prodForm.controls['number']" placeholder="Enter Product Number" ></md-input>
-                        </p>
-                        <p class="prodinfo">
-                            <md-input name="lineID" required [formControl]="prodForm.controls['lineID']" placeholder="Enter Line ID" ></md-input>
-                        </p>
-                        <p class="prodinfo">
-                            <md-input name="groupName" required [formControl]="prodForm.controls['groupName']" placeholder="Enter Group Name" ></md-input>
-                        </p>
+                        <md-input-container class="prodinfo">
+                            <input mdInput name="name" [formControl]="prodForm.controls['name']" required placeholder="Enter Product Name"/>
+                        </md-input-container>
+                        <md-input-container class="prodinfo">
+                            <input mdInput name="number" required [formControl]="prodForm.controls['number']" placeholder="Enter Product Number"/>
+                        </md-input-container>
+                        <md-input-container class="prodinfo">
+                            <input mdInput name="lineID" required [formControl]="prodForm.controls['lineID']" placeholder="Enter Line ID"/>
+                        </md-input-container>
+                        <md-input-container class="prodinfo">
+                            <input mdInput name="groupName" required [formControl]="prodForm.controls['groupName']" placeholder="Enter Group Name"/>
+                        </md-input-container>
                 </div>
             </md-card-content>
             <md-card-actions align="right" *ngIf="!edit">

@@ -76,39 +76,57 @@
                     <div class="testDetailsCont" >
                         <div class="testInfoField">
                             <h3 md-line>Number</h3>
-                            <md-input name="number" required placeholder="Enter Number" [formControl]="testDetailsForm.controls['number']"></md-input>
+                            <md-input-container>
+                                <input mdInput name="number" required placeholder="Enter Number" [formControl]="testDetailsForm.controls['number']"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Inspection Characterestics</h3>
-                            <md-input name="inspectionChar" required placeholder="Enter Inspection Characterestics" [formControl]="testDetailsForm.controls.inspectionChar"></md-input>
+                            <md-input-container>
+                                <input mdInput name="inspectionChar" required placeholder="Enter Inspection Characterestics" [formControl]="testDetailsForm.controls.inspectionChar"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Tool Number</h3>
-                            <md-input name="toolNumber" required placeholder="Enter Tool Number" [formControl]="testDetailsForm.controls.toolNumber"></md-input>
+                            <md-input-container>
+                                <input mdInput name="toolNumber" required placeholder="Enter Tool Number" [formControl]="testDetailsForm.controls.toolNumber"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Inspection Method</h3>
-                            <md-input name="inspectionMethod" required placeholder="Enter Inspection Method" [formControl]="testDetailsForm.controls.inspectionMethod"></md-input>
+                            <md-input-container>
+                                <input mdInput name="inspectionMethod" required placeholder="Enter Inspection Method" [formControl]="testDetailsForm.controls.inspectionMethod"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Maintainance Description</h3>
-                            <md-input name="maintainanceDesc" required placeholder="Enter Maintainance Description" [formControl]="testDetailsForm.controls.maintainanceDesc"></md-input>
+                            <md-input-container>
+                                <input mdInput name="maintainanceDesc" required placeholder="Enter Maintainance Description" [formControl]="testDetailsForm.controls.maintainanceDesc"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Record Description</h3>
-                            <md-input name="recordDesc" required placeholder="Enter Record Description" [formControl]="testDetailsForm.controls.recordDesc"></md-input>
+                            <md-input-container>
+                                <input mdInput name="recordDesc" required placeholder="Enter Record Description" [formControl]="testDetailsForm.controls.recordDesc"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Instruction Method Key</h3>
-                            <md-input name="insMetKey" required placeholder="Enter Instruction Method Key" [formControl]="testDetailsForm.controls.insMetKey"></md-input>
+                            <md-input-container>
+                                <input mdInput name="insMetKey" required placeholder="Enter Instruction Method Key" [formControl]="testDetailsForm.controls.insMetKey"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Result Description</h3>
-                            <md-input name="prodResDesc" required placeholder="Enter Result Description" [formControl]="testDetailsForm.controls.prodResDesc"></md-input>
+                            <md-input-container>
+                                <input mdInput name="prodResDesc" required placeholder="Enter Result Description" [formControl]="testDetailsForm.controls.prodResDesc"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField">
                             <h3 md-line>Responsible Description</h3>
-                            <md-input name="respDesc" required placeholder="Enter Responsible Description" [formControl]="testDetailsForm.controls.respDesc"></md-input>
+                            <md-input-container>
+                                <input mdInput name="respDesc" required placeholder="Enter Responsible Description" [formControl]="testDetailsForm.controls.respDesc"/>
+                            </md-input-container>
                         </div>
                     </div>
                 </form>
@@ -149,19 +167,27 @@
                     <div class="testDetailsCont">
                         <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Minimum</h3>
-                            <md-input name="minVal" required placeholder="Enter Minimum Value" [formControl]="testDataForm.controls.minVal"></md-input>
+                            <md-input-container>
+                                <input mdInput name="minVal" required placeholder="Enter Minimum Value" [formControl]="testDataForm.controls.minVal"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Maximum</h3>
-                            <md-input name="maxVal" required placeholder="Enter Maximum Value" [formControl]="testDataForm.controls.maxVal"></md-input>
+                            <md-input-container>
+                                <input mdInput name="maxVal" required placeholder="Enter Maximum Value" [formControl]="testDataForm.controls.maxVal"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField" *ngIf="!testDataForm.controls.valBool.value">
                             <h3 md-line>Precision</h3>
-                            <md-input name="precision" required placeholder="Enter Precision Value" [formControl]="testDataForm.controls.precision"></md-input>
+                            <md-input-container>
+                                <input mdInput name="precision" required placeholder="Enter Precision Value" [formControl]="testDataForm.controls.precision"/>
+                            </md-input-container>
                         </div>
                         <div class="testInfoField testInfoQuestion" *ngIf="testDataForm.controls.valBool.value">
                             <h3 md-line>Question</h3>
-                            <md-textarea name="boolQuestion" required placeholder="Enter Question" [formControl]="testDataForm.controls.boolQuestion"></md-textarea>
+                            <md-input-container>
+                                <textarea mdInput name="boolQuestion" required placeholder="Enter Question" [formControl]="testDataForm.controls.boolQuestion"></textarea>
+                            </md-input-container>
                         </div>
                     </div>
                 </form>

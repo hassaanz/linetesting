@@ -20,10 +20,11 @@
     <!-- 2. Configure SystemJS -->
     <script src="~/Content/system.config.js"></script>
     <script>
-        System.import('../Scripts/main').catch(function (err)
-        {
-            console.error(err);
-        });
+        System.import('../Scripts/main')
+       .then(null, console.error.bind(console))
+       .catch(function (err) {
+           console.error(err);
+       });
     </script>
 
     @Styles.Render("~/Content/css")

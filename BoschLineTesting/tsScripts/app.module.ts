@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { Ng2MaterialModule } from "ng2-material";
+// import { Ng2MaterialModule } from "ng2-material";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 
@@ -33,8 +33,8 @@ import { AddObservationDialog } from './dashboard/Products/addObservationDialog.
 
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HomeComponent } from './dashboard/home/home.component';
-import { SideNavComponent } from './sidenav/sidenav.component';
-import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';
+// import { SideNavComponent } from './sidenav/sidenav.component';
+// import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';
 
 // Providers
 import { UserService } from './services/user.service';
@@ -52,7 +52,6 @@ import { routing } from './app.routes';
 @NgModule({
     imports: [
         MaterialModule.forRoot(),
-        Ng2MaterialModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
@@ -77,8 +76,6 @@ import { routing } from './app.routes';
         ObservationListItemComponent,
         SettingsComponent,
         HomeComponent,
-        SideNavComponent,
-        AutoCompleteFilter
     ],
     providers: [
         UserService,

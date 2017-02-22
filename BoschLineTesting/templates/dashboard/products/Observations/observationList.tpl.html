@@ -1,6 +1,8 @@
 <div class="searchBox">
     <i md-icon class="material-icons md-24 fabBut">search</i>
-    <md-input class="searchImp" align="right" name="searchObs" placeholder="Search Tests" #grpSearchBox [(ngModel)]="obsSearchStr"  (ngModelChange)="obsFilterChanged($event)"></md-input>
+    <md-input-container>
+    	<input mdInput class="searchImp" align="right" name="searchObs" placeholder="Search Tests" #grpSearchBox [(ngModel)]="obsSearchStr"  (ngModelChange)="obsFilterChanged($event)"/>
+    </md-input-container>
 </div>
 <div class="obsListItem" *ngFor="let obs of filteredObservations">
     <bsh-observation-list-item [observation]="obs" [selectedID]="selectedObs" (obsSelected) = "onObsSelect($event)"></bsh-observation-list-item>

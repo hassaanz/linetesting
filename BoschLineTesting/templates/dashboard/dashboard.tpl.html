@@ -1,5 +1,5 @@
 <div layout="column" style="height:90%;">
-  <md-sidenav-layout>
+  <md-sidenav-container>
     <md-sidenav class="bshSidebar" #left (open)="mybutton.focus()" [opened]="true" mode="side" layout-padding>
         <md-toolbar>
             <div style="display: block; color: grey;">
@@ -38,10 +38,8 @@
             </md-list-item>-->
         </md-nav-list>            
     </md-sidenav>
-    <md-content layout-padding>
-        <div style="height: 95%" class="mainContent">
-            <router-outlet></router-outlet>
-        </div>
-    </md-content>
-  </md-sidenav-layout>
+    <div layout-padding style="height: 95%" class="mainContent">
+        <router-outlet></router-outlet>
+    </div>
+  </md-sidenav-container>
 </div>

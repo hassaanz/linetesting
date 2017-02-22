@@ -21,18 +21,18 @@
             </div>
             <div class="editContainer" *ngIf="edit">
                 <form #prodForm="ngForm" (ngSubmit)="onSave(f)">
-                    <p class="prodinfo">
-                        <md-input name="name" required placeholder="Enter Product Name" ngControl="name"></md-input>
-                    </p>
-                    <p class="prodinfo">
-                        <md-input name="number" required placeholder="Enter Product Number" ngControl="number"></md-input>
-                    </p>
-                    <p class="prodinfo">
-                        <md-input name="lineID" required placeholder="Enter Line Name" ngControl="lineID"></md-input>
-                    </p>
-                    <p class="prodinfo">
-                        <md-input name="groupName" required placeholder="Enter Group Name" ngControl="groupName"></md-input>
-                    </p>
+                    <md-input-container class="prodinfo">
+                        <input mdInput name="name" required placeholder="Enter Product Name" ngControl="name"/>
+                    </md-input-container>
+                    <md-input-container class="prodinfo">
+                        <input mdInput name="number" required placeholder="Enter Product Number" ngControl="number"/>
+                    </md-input-container>
+                    <md-input-container class="prodinfo">
+                        <input mdInput name="lineID" required placeholder="Enter Line Name" ngControl="lineID"/>
+                    </md-input-container>
+                    <md-input-container class="prodinfo">
+                        <input mdInput name="groupName" required placeholder="Enter Group Name" ngControl="groupName"/>
+                    </md-input-container>
                 </form>
             </div>
         </md-card-content>

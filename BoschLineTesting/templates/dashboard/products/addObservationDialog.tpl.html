@@ -11,70 +11,90 @@
                         <i class="material-icons md-18 addTestFormIcon">looks_one</i>
                         <span>Number</span>
                     </div>
-                    <md-input formControlName="number" class="addTestFormInp" placeholder="Number"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="number" class="addTestFormInp" placeholder="Number"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">short_text</i>
                         <span>Short Text</span>
                     </div>
-                    <md-input formControlName="shortText" class="addTestFormInp" placeholder="Short Text"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="shortText" class="addTestFormInp" placeholder="Short Text"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">spa</i>
                         <span>Characterestics</span>
                     </div>
-                    <md-input formControlName="inspectionChar" class="addTestFormInp" placeholder="Inspection Characterestics"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="inspectionChar" class="addTestFormInp" placeholder="Inspection Characterestics"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">build</i>
                         <span>Tool Number</span>
                     </div>
-                    <md-input formControlName="toolNumber" class="addTestFormInp" placeholder="Tool Number"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="toolNumber" class="addTestFormInp" placeholder="Tool Number"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">remove_red_eye</i>
                         <span>Inspection Method</span>
                     </div>
-                    <md-input formControlName="inspectionMethod" class="addTestFormInp" placeholder="Inspection Method"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="inspectionMethod" class="addTestFormInp" placeholder="Inspection Method"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">gavel</i>
                         <span>Maintainance Description</span>
                     </div>
-                    <md-input formControlName="maintainanceDesc" class="addTestFormInp" placeholder="Maintainance Description"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="maintainanceDesc" class="addTestFormInp" placeholder="Maintainance Description"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">folder_open</i>
                         <span>Record Description</span>
                     </div>
-                    <md-input formControlName="recordDesc" class="addTestFormInp" placeholder="Record Description"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="recordDesc" class="addTestFormInp" placeholder="Record Description"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">insert_comment</i>
                         <span>Instruction Method Key</span>
                     </div>
-                    <md-input formControlName="insMetKey" class="addTestFormInp" placeholder="Instruction Method Key"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="insMetKey" class="addTestFormInp" placeholder="Instruction Method Key"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">description</i>
                         <span>Product Result Description</span>
                     </div>
-                    <md-input formControlName="prodResDesc" class="addTestFormInp" placeholder="Product Result Description"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="prodResDesc" class="addTestFormInp" placeholder="Product Result Description"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">accessibility</i>
                         <span>Responsible Description</span>
                     </div>
-                    <md-input formControlName="respDesc" class="addTestFormInp" placeholder="Responsible Description"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="respDesc" class="addTestFormInp" placeholder="Responsible Description"/>
+                    </md-input-container>
                 </div>
             </div>
             <div class="measurements" *ngIf="testDataEdit">
@@ -83,21 +103,27 @@
                         <i class="material-icons md-18 addTestFormIcon">trending_down</i>
                         <span>Minimum</span>
                     </div>
-                    <md-input formControlName="minVal" class="addTestFormInp" placeholder="Minimum Value"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="minVal" class="addTestFormInp" placeholder="Minimum Value"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">trending_up</i>
                         <span>Maximum</span>
                     </div>
-                    <md-input formControlName="maxVal" class="addTestFormInp" placeholder="Maximum Value"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="maxVal" class="addTestFormInp" placeholder="Maximum Value"/>
+                    </md-input-container>
                 </div>
                 <div class="addTestFieldCont">
                     <div class="addTestFieldLabel">
                         <i class="material-icons md-18 addTestFormIcon">album</i>
                         <span>Precision</span>
                     </div>
-                    <md-input formControlName="precision" class="addTestFormInp" placeholder="Precision Value"></md-input>
+                    <md-input-container>
+                        <input mdInput formControlName="precision" class="addTestFormInp" placeholder="Precision Value"/>
+                    </md-input-container>
                 </div>
             </div>
         </form>

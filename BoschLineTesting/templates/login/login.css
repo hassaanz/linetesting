@@ -8,9 +8,15 @@ div.loginCard {
 md-card.cardContainer {
     width: 50%;    
 }
-md-card.cardContainer md-input {
+md-card.cardContainer input {
     width: 100%;
+    overflow: inherit;
 }
 md-card.cardContainer button[md-raised-button] {
     display: block;
+}
+
+md-input-container.md-input-focused label {
+  color: blue;
+  overflow: visible !important;
 }
