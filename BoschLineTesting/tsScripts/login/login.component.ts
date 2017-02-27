@@ -24,7 +24,12 @@ export class LoginComponent {
         private userService: UserService) { }
 
     onSubmit(f: NgForm) {
-        let u = new User("abs","xyz", "help");
+        // TODO Get user by credentials and emit user changed
+        let u = new User({
+            user_id: 1,
+            nt_username: this.login
+
+        });
         this.userService.userChanged(u);
         // console.log(f.value);  // { first: '', last: '' }
         // console.log(f.valid);  // false

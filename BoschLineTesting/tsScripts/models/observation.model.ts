@@ -30,15 +30,15 @@ const ObservationRecord = Record({
 export class Observation extends ObservationRecord {
     id: number;
     number: number;
-    shortText: String;
-    inspectionChar: String;
+    shortText: string;
+    inspectionChar: string;
     toolNumber: number;
-    inspectionMethod: String;
-    maintainanceDesc: String;
-    recordDesc: String;
-    insMetKey: String;
-    prodResDesc: String;
-    respDesc: String;
+    inspectionMethod: string;
+    maintainanceDesc: string;
+    recordDesc: string;
+    insMetKey: string;
+    prodResDesc: string;
+    respDesc: string;
     validFrom: Date;
     validTo: Date;
     createdOn: Date;

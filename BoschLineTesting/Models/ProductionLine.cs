@@ -22,5 +22,6 @@ namespace BoschLineTesting.Models
         [Column("To")]
         public DateTime To { get; set; }
         public virtual Line Line { get; set; }
+        // TODO Add Created_By and Created_On
     }
 }

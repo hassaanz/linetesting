@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit {
             this.prodForm = fb.group({
                 name: ["", Validators.required],
                 number: ["", Validators.required],
-                lineID: ["", Validators.required],
+                // lineID: ["", Validators.required],
                 groupName: ["", Validators.required]
             });
             this.productsService.products.subscribe(
@@ -71,10 +71,10 @@ export class ProductsComponent implements OnInit {
         let productsGroups = [];
         let prodGroupArr :Object[]= [];
         products.forEach( (prod) => {
-            if (!productsGroups[prod.groupName]) {
-                productsGroups[prod.groupName] = {groupName: prod.groupName, prods: []};
+            if (!productsGroups[prod.Group_id]) {
+                productsGroups[prod.Group_id] = {groupName: prod.Group_id, prods: []};
             }
-            productsGroups[prod.groupName].prods.push(prod);
+            productsGroups[prod.Group_id].prods.push(prod);
         });
         
         Object.keys(productsGroups).forEach( (key, ind) => {

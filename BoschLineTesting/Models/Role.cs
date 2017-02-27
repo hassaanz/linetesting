@@ -18,5 +18,6 @@ namespace BoschLineTesting.Models
         public string role { get; set; }
         [Column("description")]
         public string description { get; set; }
+        // TODO Add Created_By and Created_On
     }
 }

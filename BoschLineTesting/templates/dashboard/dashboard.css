@@ -47,3 +47,10 @@ span.menuSymb > i{
     font-size: 26;
     margin-right: 2px;
 }
+
+.mat-sidenav-container {
+   height: 90%;
+   min-height: 90%;
+   width: 100%;
+   min-width: 100%;
+}

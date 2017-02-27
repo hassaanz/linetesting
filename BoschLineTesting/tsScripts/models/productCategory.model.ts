@@ -11,9 +11,9 @@ const ProductCategoryRecord = Record({
  */
 export class ProductCategory extends ProductCategoryRecord {
     id: number;
-    name: String;
+    name: string;
     createdOn: Date;
-    createdBy: String;
+    createdBy: string;
 
     constructor(props) {
         super(props);

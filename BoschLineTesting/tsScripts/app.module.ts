@@ -32,6 +32,7 @@ import { ObservationListItemComponent } from './dashboard/Products/Observations/
 import { AddObservationDialog } from './dashboard/Products/addObservationDialog.component';
 
 import { SettingsComponent } from './dashboard/settings/settings.component';
+import { usersListComponent } from './dashboard/settings/UsersList/usersList.component';
 import { HomeComponent } from './dashboard/home/home.component';
 // import { SideNavComponent } from './sidenav/sidenav.component';
 // import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';

@@ -1,27 +1,21 @@
 import { Record } from 'immutable';
 
 const ProductRecord = Record({
-    id: -1,
-    number: -1,
-    name: '',
-    groupID: -1,
-    createdOn: new Date(),
-    createdBy: '',
-    groupName: '',
-    lineName: '',
+    product_number: -1,
+    product_name: '',
+    Created_By: -1,
+    Created_On: new Date(),
+    Group_id: -1,
 });
 /**
  * Product
  */
 export class Product extends ProductRecord {
-    id: number;
-    number: string;
-    name: String;
-    createdOn: Date;
-    createdBy: String;
-    groupID: number;
-    groupName: string;
-    lineName: string;
+    product_number: number;
+    product_name: string;
+    Created_By: number;
+    Created_On: Date;
+    Group_id: number;
     
     constructor(props) {
         super(props);

@@ -6,8 +6,8 @@
         <md-card-subtitle>Please enter your credentials to login</md-card-subtitle>
         <md-card-content>
             <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-                <md-input-container MdPlaceholder="Username">
-                    <input mdInput size="" name="MdPlaceholderusername" required  [(ngModel)]="login"/>
+                <md-input-container>
+                    <input mdInput size=""  type="text" required name="username" placeholder="Username" [(ngModel)]="login"/>
                 </md-input-container>
                 <md-input-container>
                     <input mdInput size="" type="password" required name="password" placeholder="Password" [(ngModel)]="password"/>

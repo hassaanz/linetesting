@@ -33,8 +33,9 @@ namespace BoschLineTesting.Models
         public DateTime valid_from { get; set; }
         [Column("Created_On")]
         public DateTime Created_On { get; set; }
+        // TODO Add Created_By
         [Column("oper_shorttext")]
-        public DateTime oper_shorttext { get; set; }
+        public string oper_shorttext { get; set; }
         [Column("tool_number")]
         public string tool_number { get; set; }
         [Column("ins_met_key")]

@@ -11,22 +11,25 @@ export class ProductsService {
 
   private _productsSource: BehaviorSubject<List<Product>> = new BehaviorSubject(List([]));
   
-  constructor(private productsBackend: ProductsBackendService) {
+  constructor(private productsBackendService: ProductsBackendService) {
     this.loadInitialData();
   }
 
   loadInitialData() {
-    let products = (<Object[]>this.productsBackend.getAllProducts()).map( (prod: any) =>
-        new Product({
-          id: prod.id,
-          number: prod.number,
-          name: prod.name,
-          createdOn: prod.createdOn,
-          createdBy: prod.createdBy,
-          groupName: prod.category,
-          lineName: prod.Line,
-      }));
-    this._productsSource.next(List(products));
+    this.productsBackendService.getAllProducts()
+      .subscribe( res => {
+        let products = (<Object[]>res.json()).map( (product: any) => 
+          new Product({
+            product_number: product.product_number,
+            product_name: product.product_name,
+            Created_By: product.Created_By,
+            Created_On: product.Created_On,
+            Group_id: product.Group_id,
+          }));
+        this._productsSource.next(List(products));
+      },
+      err => console.log('Error  retrieving products')
+    );
   }
 
   get products() {
@@ -34,17 +37,14 @@ export class ProductsService {
   }
 
   addProduct(newProd: Product) {
-    let saved = this.productsBackend.saveProduct(newProd);
-    this._productsSource.next(this._productsSource.getValue().push(saved));
+    let obs = this.productsBackendService.addProduct(newProd);
+    obs.subscribe( res => {
+      this._productsSource.next(this._productsSource.getValue().push(newProd));
+    });
+    return obs;
   }
 
   getproductByID(id: number) {
-    let foundProd = this.productsBackend.findByID(id);
-    return foundProd;
+    return this.productsBackendService.getProductByID(id);
   }
-
-  // getproductByNumber(id: number) {
-  //   let foundProd = this.productsBackend.findByNumber(id);
-  //   return foundProd;
-  // }
 }

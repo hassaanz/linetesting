@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BoschLineTesting.Models;
+using System.Web.Http.Cors;
 
 namespace BoschLineTesting.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
