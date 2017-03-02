@@ -7,6 +7,6 @@ export class Constants {
 		return this.SERVER_URL_BASE.concat(this.PRODUCTS_PATH);
 	}
 	public static usersPath() {
-		return this.SERVER_URL_BASE + this.USERS_PATH;
+		return this.SERVER_URL_BASE.concat(this.USERS_PATH);
 	}
 } 

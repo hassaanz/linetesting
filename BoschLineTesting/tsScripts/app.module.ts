@@ -32,13 +32,15 @@ import { ObservationListItemComponent } from './dashboard/Products/Observations/
 import { AddObservationDialog } from './dashboard/Products/addObservationDialog.component';
 
 import { SettingsComponent } from './dashboard/settings/settings.component';
-import { usersListComponent } from './dashboard/settings/UsersList/usersList.component';
+import { UsersListComponent } from './dashboard/settings/UsersList/usersList.component';
+import { UserRolesListComponent } from './dashboard/settings/UserRolesList/userRolesList.component';
 import { HomeComponent } from './dashboard/home/home.component';
 // import { SideNavComponent } from './sidenav/sidenav.component';
 // import { AutoCompleteFilter } from './autoCompleteFilter/autoCompleteFilter.component';
 
 // Providers
 import { UserService } from './services/user.service';
+import { UserBackendService } from './services/userBackend.service';
 import { ProductsService } from './services/products.service';
 import { ProductsBackendService } from './services/productsBackend.service';
 
@@ -77,9 +79,12 @@ import { routing } from './app.routes';
         ObservationListItemComponent,
         SettingsComponent,
         HomeComponent,
+        UsersListComponent,
+        UserRolesListComponent
     ],
     providers: [
         UserService,
+        UserBackendService,
         ProductsService,
         ProductCategoryService,
         ProductsBackendService,

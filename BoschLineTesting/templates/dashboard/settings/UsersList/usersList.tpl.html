@@ -1,1 +1,26 @@
-<div>Users List</div>s
+<table>
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Department</th>
+			<th>Created On</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Admin</td>
+			<td>IT</td>
+			<td>today</td>
+		</tr>
+	</tbody>
+</table>
+
+List
+<ul>
+	<li>User dummy</li>
+	<li *ngFor="let user of userService.users | async">
+		<div>
+			<p>{{user.nt_username}}</p>
+		</div>
+	</li>
+</ul>

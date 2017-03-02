@@ -30,7 +30,8 @@ export class LoginComponent {
             nt_username: this.login
 
         });
-        this.userService.userChanged(u);
+        // this.userService.userChanged(u);
+        
         // console.log(f.value);  // { first: '', last: '' }
         // console.log(f.valid);  // false
         this.router.navigate(['/dash']);

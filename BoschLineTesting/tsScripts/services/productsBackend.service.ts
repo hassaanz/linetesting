@@ -1,5 +1,5 @@
 import {Injectable,Inject} from '@angular/core';
-import  { Http,Headers,URLSearchParams } from '@angular/http';
+import { Http,Headers,URLSearchParams } from '@angular/http';
 import { Product } from "../models/product.model";
 import { List } from 'immutable';
 import { Observable } from "rxjs/Observable";
@@ -18,15 +18,17 @@ export class ProductsBackendService {
     getAllProducts() {
         var headers = new Headers();
         headers.append('Accept', 'application/json');
-        return this.http.get(this.apiPath);
+        return this.http.get(this.apiPath, {headers});
     }
     addProduct(newProduct: Product) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json; charset=utf-8');
-        return this.http.post(this.apiPath, JSON.stringify(newProduct.toJS()), {headers}).share();
+        return this.http.post(this.apiPath, JSON.stringify(newProduct.toJS()), {headers})
+        .share();
     }
     deleteProduct(deletedProduct: Product) {
-        return this.http.delete(this.apiPath + deletedProduct.product_number).share();
+        return this.http.delete(`${this.apiPath}/${deletedProduct.product_number}`)
+        .share();
     }
     getProductByID(id: number) {
         var headers = new Headers();
@@ -36,6 +38,10 @@ export class ProductsBackendService {
     updateProduct(updatedProduct: Product) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json; charset=utf-8');
-        return this.http.put(`${this.apiPath}/${updatedProduct.product_number}`, {headers}).share();
+        return this.http.put(
+            `${this.apiPath}/${updatedProduct.product_number}`,
+            JSON.stringify(updatedProduct.toJS()),
+            {headers}
+        ).share();
     }
 }

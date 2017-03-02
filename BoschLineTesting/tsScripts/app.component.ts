@@ -5,9 +5,7 @@ import { UserService } from "./services/user.service";
 import { ProductsService } from "./services/products.service";
 import { Subscription }   from 'rxjs/Subscription';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
-
-
+import { List } from 'immutable';
 
 @Component({
     selector: 'my-app',
@@ -18,17 +16,14 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 // App Component class
 export class AppComponent implements OnDestroy, OnInit {
     user: User;
+    users: List<User>;
     userSubscription: Subscription;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private userService: UserService) {
-        this.userSubscription = userService.userSource$.subscribe(
-            user => {
-                console.log('User Changed', user);
-                this.user = user;
-            });
+
     }
     onLogin(usr: User) {
         usr ? this.user = usr : null;
@@ -37,9 +32,9 @@ export class AppComponent implements OnDestroy, OnInit {
     ngOnInit() {
         console.log('init app.component');
         console.log(this.user);
-        if (this.user === undefined || this.user === null) {
-            this.router.navigate(['/']);
-        } 
+        // if (this.user === undefined || this.user === null) {
+        //     this.router.navigate(['/']);
+        // } 
     }
 
     ngOnDestroy() {
